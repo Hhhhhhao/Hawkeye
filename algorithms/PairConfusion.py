@@ -3,18 +3,23 @@ import sys
 import torch
 
 sys.path.append(os.path.abspath('.'))
-from train import Trainer
+from model.loss.pair_confusion import PairwiseConfusionLoss
+from algorithms.base import Trainer
 
 
-class MPNTrainer(Trainer):
+class PCResNetTrainer(Trainer):
     def __init__(self):
-        super(MPNTrainer, self).__init__()
+        super(PCResNetTrainer, self).__init__()
+
+    def get_criterion(self, config):
+        return PairwiseConfusionLoss(config)
 
     def get_optimizer(self, config):
+        classifier_param_ids = list(map(id, self.model.fc.parameters()))
+        base_params = list(filter(lambda p: id(p) not in classifier_param_ids, self.model.parameters()))
         return torch.optim.Adam([
-            {'params': self.model.classifier.parameters(), 'lr': config.lr},
-            {'params': self.model.pool.parameters(), 'lr': config.lr},
-            {'params': self.model.backbone.parameters(), 'lr': 0.2 * config.lr},
+            {'params': self.model.fc.parameters(), 'lr': config.lr},
+            {'params': base_params, 'lr': 0.1 * config.lr}
         ], weight_decay=config.weight_decay)
 
     def get_scheduler(self, config):
@@ -31,6 +36,6 @@ class MPNTrainer(Trainer):
 
 
 if __name__ == '__main__':
-    trainer = MPNTrainer()
+    trainer = PCResNetTrainer()
     # print(trainer.model)
     trainer.train()

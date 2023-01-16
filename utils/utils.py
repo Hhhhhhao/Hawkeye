@@ -63,7 +63,7 @@ def accuracy(scores, targets, k):
     _, ind = scores.topk(k, 1, True, True)
     correct = ind.eq(targets.view(-1, 1).expand_as(ind))
     correct_total = correct.view(-1).float().sum()  # 0D tensor
-    return correct_total.item() * (100.0 / batch_size)
+    return correct_total * (100.0 / batch_size)
 
 
 class TqdmHandler(logging.StreamHandler):
@@ -99,10 +99,10 @@ def build_config_from_dict(_dict):
     return cfg
 
 
-def set_random_seed(seed):
-    np.random.seed(seed)
-    random.seed(seed)
-    torch.manual_seed(seed)
+def set_random_seed(seed, rank):
+    np.random.seed(seed + rank)
+    random.seed(seed + rank)
+    torch.manual_seed(seed + rank)
     if torch.cuda.is_available():
-        torch.cuda.manual_seed(seed)
-        torch.cuda.manual_seed_all(seed)
+        torch.cuda.manual_seed(seed + rank)
+        torch.cuda.manual_seed_all(seed + rank)

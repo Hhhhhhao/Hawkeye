@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 
 sys.path.append(os.path.abspath('.'))
-from train import Trainer
+from algorithms.base import Trainer
 from utils import accuracy
 
 

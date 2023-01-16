@@ -5,7 +5,7 @@ import torchvision
 
 sys.path.append(os.path.abspath('.'))
 from model.loss.InterpParts_loss import InterpPartsLoss
-from train import Trainer
+from algorithms.base import Trainer
 from utils import accuracy
 
 

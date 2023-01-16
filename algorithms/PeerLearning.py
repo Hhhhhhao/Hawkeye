@@ -5,7 +5,7 @@ import numpy as np
 from PIL import ImageFile
 
 sys.path.append(os.path.abspath('.'))
-from train import Trainer
+from algorithms.base import Trainer
 from model.loss.peer_learning_loss import PeerLearningLoss
 from utils import accuracy, AverageMeter, PerformanceMeter
 

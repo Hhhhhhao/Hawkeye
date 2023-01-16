@@ -4,7 +4,7 @@ import torch
 from torchvision.transforms import transforms
 
 sys.path.append(os.path.abspath('.'))
-from train import Trainer
+from algorithms.base import Trainer
 from utils import accuracy
 from model.loss.CrossX_loss import CrossXLoss
 

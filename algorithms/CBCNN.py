@@ -3,7 +3,7 @@ import sys
 import torch
 
 sys.path.append(os.path.abspath('.'))
-from train import Trainer
+from algorithms.base import Trainer
 
 
 class CBCNNTrainer(Trainer):

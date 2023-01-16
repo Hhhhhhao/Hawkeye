@@ -1,13 +1,13 @@
 import torch
 import torch.nn as nn
 from torchvision import transforms
-from train import Trainer
+from algorithms.base import Trainer
 from utils import accuracy
 
 
 class BaselineTrainer(Trainer):
-    def __init__(self):
-        super(BaselineTrainer, self).__init__()
+    def __init__(self, config):
+        super(BaselineTrainer, self).__init__(config)
 
     def get_transformers(self, config):
         transformers = {
@@ -34,30 +34,6 @@ class BaselineTrainer(Trainer):
 
     def get_scheduler(self, config):
         return torch.optim.lr_scheduler.CosineAnnealingLR(self.optimizer, config.T_max, config.eta_min)
-
-    def batch_training(self, data):
-        images, labels = self.to_device(data['img']), self.to_device(data['label'])
-
-        # forward
-        outputs = self.model(images)
-        loss = self.criterion(outputs, labels)
-
-        # backward
-        self.optimizer.zero_grad()
-        loss.backward()
-        self.optimizer.step()
-
-        # record accuracy and loss
-        acc = accuracy(outputs, labels, 1)
-        self.average_meters['acc'].update(acc, images.size(0))
-        self.average_meters['loss'].update(loss.item(), images.size(0))
-
-    def batch_validate(self, data):
-        images, labels = self.to_device(data['img']), self.to_device(data['label'])
-
-        logits = self.model(images)
-        acc = accuracy(logits, labels, 1)
-        self.average_meters['acc'].update(acc, images.size(0))
 
 
 if __name__ == '__main__':

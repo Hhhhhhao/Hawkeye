@@ -4,7 +4,7 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 import logging
 
-from config import setup_config
+from utils.config import setup_config
 from dataset.dataset import FGDataset
 from torchvision import transforms
 from model.registry import MODEL

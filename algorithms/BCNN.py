@@ -4,7 +4,7 @@ import torch
 from torchvision import transforms
 
 sys.path.append(os.path.abspath('.'))
-from train import Trainer
+from algorithms.base import Trainer
 
 
 class BCNNTrainer(Trainer):

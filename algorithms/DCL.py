@@ -7,7 +7,7 @@ sys.path.append(os.path.abspath('.'))
 from model.loss.DCL_loss import DCLLoss
 from dataset.transforms import RandomSwap
 from dataset.dataset_DCL import DCLDataset, collate_fn4train, collate_fn4val
-from train import Trainer
+from algorithms.base import Trainer
 from utils import accuracy
 
 

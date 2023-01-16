@@ -1,21 +1,22 @@
 import os
 import sys
 import torch
-from torch.utils.data.dataloader import DataLoader
+from torch.utils.data import DataLoader
 
 sys.path.append(os.path.abspath('.'))
 from dataset.sampler import BalancedBatchSampler
-from model.loss.CIN_loss import CINLoss
-from train import Trainer
+from model.loss.MAMC_loss import MAMCLoss
+from algorithms.base import Trainer
 from utils import accuracy
 
 
-class CINTrainer(Trainer):
+class OSMENetTrainer(Trainer):
+
     def __init__(self):
-        super(CINTrainer, self).__init__()
+        super(OSMENetTrainer, self).__init__()
 
     def get_dataloader(self, config):
-        # CIN use `BalancedBatchSampler` to sample a fixed number of categories
+        # OSMENet use `BalancedBatchSampler` to sample a fixed number of categories
         # and a fixed number of samples in each category.
         train_sampler = BalancedBatchSampler(self.datasets['train'], config.n_classes, config.n_samples)
         dataloaders = {
@@ -29,15 +30,17 @@ class CINTrainer(Trainer):
         return dataloaders
 
     def get_criterion(self, config):
-        return self.to_device(CINLoss(config))
+        return MAMCLoss(config)
 
     def get_optimizer(self, config):
-        return torch.optim.SGD(
-            [
-                {'params': self.model.parameters(), 'lr': config.lr},
-                # CIN use a linear layer when it computes loss.
-                {'params': self.criterion.parameters(), 'lr': config.lr},
-            ], weight_decay=config.weight_decay)
+        model = self.get_model_module()
+        backbone_param_ids = list(map(id, model.backbone.parameters()))
+        fc_params = list(filter(lambda p: id(p) not in backbone_param_ids, model.parameters()))
+
+        return torch.optim.SGD([
+            {'params': model.backbone.parameters(), 'lr': 0.1 * config.lr},
+            {'params': fc_params, 'lr': config.lr},
+        ], weight_decay=config.weight_decay)
 
     def get_scheduler(self, config):
         main_lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
@@ -53,10 +56,10 @@ class CINTrainer(Trainer):
 
     def batch_training(self, data):
         images, labels = self.to_device(data['img']), self.to_device(data['label'])
-
-        outputs = self.model(images)
+        # forward
+        outputs = self.model(images)  # [N P C]
+        pred, x_part = outputs
         loss = self.criterion(outputs, labels)
-        logits, _ = outputs
 
         # backward
         self.optimizer.zero_grad()
@@ -64,12 +67,19 @@ class CINTrainer(Trainer):
         self.optimizer.step()
 
         # record accuracy and loss
-        acc = accuracy(logits, labels, 1)
-        self.average_meters['acc'].update(acc)
-        self.average_meters['loss'].update(loss.item())
+        acc = accuracy(pred, labels, 1)
+        self.average_meters['acc'].update(acc, images.size(0))
+        self.average_meters['loss'].update(loss.item(), images.size(0))
+
+    def batch_validate(self, data):
+        images, labels = self.to_device(data['img']), self.to_device(data['label'])
+
+        pred, x_part = self.model(images)
+        acc = accuracy(pred, labels, 1)
+        self.average_meters['acc'].update(acc, images.size(0))
 
 
 if __name__ == '__main__':
-    trainer = CINTrainer()
+    trainer = OSMENetTrainer()
     # print(trainer.model)
     trainer.train()

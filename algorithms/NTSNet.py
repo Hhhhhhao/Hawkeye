@@ -4,7 +4,7 @@ import torch
 
 sys.path.append(os.path.abspath('.'))
 from model.loss.NTS_loss import NTSLoss
-from train import Trainer
+from algorithms.base import Trainer
 from utils import accuracy
 
 

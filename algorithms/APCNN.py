@@ -7,13 +7,13 @@ from torchvision.transforms import autoaugment, transforms
 from torchvision.transforms.functional import InterpolationMode
 
 sys.path.append(os.path.abspath('.'))
-from train import Trainer
+from algorithms.base import Trainer
 from utils import accuracy
 
 
 class APCNNTrainer(Trainer):
-    def __init__(self):
-        super(APCNNTrainer, self).__init__()
+    def __init__(self, config):
+        super(APCNNTrainer, self).__init__(config)
 
     def get_transformers(self, config):
         return {

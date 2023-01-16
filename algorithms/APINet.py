@@ -6,7 +6,7 @@ from torch.utils.data.dataloader import DataLoader
 sys.path.append(os.path.abspath('.'))
 from dataset.sampler import BalancedBatchSampler
 from model.loss.APINet_loss import APINetLoss
-from train import Trainer
+from algorithms.base import Trainer
 from utils import accuracy
 
 

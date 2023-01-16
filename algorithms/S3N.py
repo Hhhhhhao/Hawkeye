@@ -4,7 +4,7 @@ import torch
 import torchvision.transforms
 
 sys.path.append(os.path.abspath('.'))
-from train import Trainer
+from algorithms.base import Trainer
 from model.loss.S3N_loss import MultiSmoothLoss
 from utils import accuracy
 
