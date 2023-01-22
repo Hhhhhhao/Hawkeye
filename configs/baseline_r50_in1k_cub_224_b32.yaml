@@ -1,6 +1,6 @@
 experiment:
   name: ResNet50                # The name of experiment.
-  log_dir: results/base_res50   # Log directory of the experiment.
+  log_dir: /media/Dormammu/haoc/hawkeye_fgvc/results/base_res50   # Log directory of the experiment.
   cuda: [0]                     # The list of gpu to use. `[]` for cpu only.
   seed: 42                      # Fix the random seed. `None` for random.
   use_amp: False                # Mixed precision training
@@ -9,7 +9,7 @@ experiment:
 dataset:
   name: cub                     # Here we use CUB200 dataset.
   root_dir: /media/Auriga/datasets/CUB_200_2011/CUB_200_2011/images   # Path to the folder of images in CUB200.
-  meta_dir: metadata/cub        # Path to meta-data file for CUB200.
+  meta_dir: /media/Dormammu/haoc/hawkeye_fgvc/metadata/cub        # Path to meta-data file for CUB200.
   batch_size: 32                # Number of images in a batch.
   num_workers: 4                # Number of workers for dataloader.
   transformer:

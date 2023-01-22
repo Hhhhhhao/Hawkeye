@@ -27,7 +27,12 @@ def _parse_args():
 
 
 def _get_default_config():
-    BASE_CONFIG_PATH = 'configs/Baseline.yaml'
+    BASE_CONFIG_PATH = 'configs/baseline_r50_in1k_cub_224_b32.yaml'
     with open(BASE_CONFIG_PATH) as f:
         cfg = CN.load_cfg(f)
+    return cfg
+
+
+def _process_cfg(cfg):
+    cfg.model.img_size = cfg.dataset.transformer.image_size
     return cfg

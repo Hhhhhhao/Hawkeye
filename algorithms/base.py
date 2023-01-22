@@ -1,15 +1,20 @@
 import os
 import sys
 import torch
+
 from contextlib import suppress
 from functools import partial
 from tensorboardX import SummaryWriter
 from torch.utils.data import DataLoader, DistributedSampler
-
 from torch.nn.parallel import DataParallel, DistributedDataParallel 
 from tqdm import tqdm
 import logging
 from shutil import copyfile
+
+import ray
+from ray import tune
+from ray.air import session
+from ray.air.checkpoint import Checkpoint
 
 import utils
 from dataset.dataset import FGDataset
@@ -54,6 +59,7 @@ class Trainer(object):
         self.total_epoch = self.config.train.epoch
         self.resume = 'resume' in self.config.experiment and self.config.experiment.resume
         self.debug = self.config.experiment.debug if 'debug' in self.config.experiment else False
+        self.tune = self.config.experiment.tune if 'tune' in self.config.experiment else False
         self.log_root = os.path.join(self.config.experiment.log_dir, self.config.experiment.name)
         self.report_one_line = True  # logger report acc and loss in one line when training
 
@@ -229,7 +235,7 @@ class Trainer(object):
 
     # TODO: change here
     def get_optimizer(self, config):
-        return torch.optim.Adam(self.model.parameters(), lr=config.lr, weight_decay=config.weight_decay)
+        return torch.optim.AdamW(self.model.parameters(), lr=config.lr, weight_decay=config.weight_decay)
 
     # TODO: change here
     def get_scheduler(self, config):
@@ -344,11 +350,19 @@ class Trainer(object):
             if is_best and utils.is_primary(self.config):
                 self.logger.info('Saving best model ...')
                 self.save_model('best_model.pth')
+            self.save_model('last_model.pth')
+
+            # TODO: move to on_end_epoch
+            if self.tune:
+                checkpoint = Checkpoint.from_directory(self.log_root)
+                session.report({"accuracy": val_acc}, checkpoint=checkpoint)
 
             # hook: on_end_epoch
             self._on_end_epoch()
 
         self.logger.info(f'best acc:{self.performance_meters["val"]["acc"].best_value}')
+        return self.performance_meters["val"]["acc"].best_value
+
 
     def batch_training(self, data):
         # images, labels = self.to_device(data['img']), self.to_device(data['label'])
