@@ -93,7 +93,11 @@ def init_distributed_device(args):
             args.rank = torch.distributed.get_rank()
         args.distributed = True
     else:
-        args.world_size = len(os.environ['CUDA_VISIBLE_DEVICES'])
+        if "CUDA_VISIBLE_DEVICES" in os.environ:
+            args.world_size = len(os.environ['CUDA_VISIBLE_DEVICES'])
+        else:
+            os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+            args.world_size = 1
 
     if torch.cuda.is_available():
         if args.distributed:

@@ -27,7 +27,7 @@ def _parse_args():
 
 
 def _get_default_config():
-    BASE_CONFIG_PATH = 'configs/baseline_r50_in1k_cub_224_b32.yaml'
+    BASE_CONFIG_PATH = 'configs/baseline_r50_in21k_224/baseline_r50_in21k_cub_224_b32.yaml'
     with open(BASE_CONFIG_PATH) as f:
         cfg = CN.load_cfg(f)
     return cfg
