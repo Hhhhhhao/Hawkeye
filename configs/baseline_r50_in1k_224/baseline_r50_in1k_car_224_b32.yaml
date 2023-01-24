@@ -1,17 +1,17 @@
 dataset:
   batch_size: 32
-  meta_dir: /media/Dormammu/haoc/hawkeye_fgvc/metadata/car
+  meta_dir: /media/Zeus/hawkeye_fgvc/metadata/car
   name: car
   num_workers: 4
-  root_dir: /media/Auriga/datasets/Stanford_Car/
+  root_dir: /media/Zeus/datasets/Stanford_Car/
   transformer:
     auto_aug: auto_aug
     image_size: 224
     rand_erase: 0.2256590393747257
     resize_size: 256
 experiment:
-  log_dir: /media/Dormammu/haoc/hawkeye_fgvc/results/base_res50_tune
-  name: ResNet50_Cars_224_None
+  log_dir: /media/Zeus/hawkeye_fgvc/results/base_res50_tune
+  name: ResNet50_Cars_224
   seed: 42
   tune: true
   use_amp: false

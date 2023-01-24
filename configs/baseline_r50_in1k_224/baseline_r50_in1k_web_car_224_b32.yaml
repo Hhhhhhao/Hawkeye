@@ -1,14 +1,14 @@
 experiment:
   name: ResNet50_WebCar_224                # The name of experiment.
-  log_dir: /media/Dormammu/haoc/hawkeye_fgvc/results/base_res50   # Log directory of the experiment.
+  log_dir: /media/Zeus/hawkeye_fgvc/results/base_res50   # Log directory of the experiment.
   seed: 42                      # Fix the random seed. `None` for random.
   use_amp: False                # Mixed precision training
 #  debug: False                  # If `True`, ignore the error of log folder exist.
 #  resume: results/base_res50/ResNet50/checkpoint_epoch_12.pth   # Resume from a checkpoint.
 dataset:
   name: car                     # Here we use CUB200 dataset.
-  root_dir: /media/Auriga/datasets/web-car    # Path to the folder of images in CUB200.
-  meta_dir: /media/Dormammu/haoc/hawkeye_fgvc/metadata/web_car        # Path to meta-data file for CUB200.
+  root_dir: /media/Zeus/datasets/web-car    # Path to the folder of images in CUB200.
+  meta_dir: /media/Zeus/hawkeye_fgvc/metadata/web_car        # Path to meta-data file for CUB200.
   batch_size: 32                # Number of images in a batch.
   num_workers: 4                # Number of workers for dataloader.
   transformer:

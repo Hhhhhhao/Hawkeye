@@ -16,10 +16,11 @@ from ray.tune.search.hyperopt import HyperOptSearch
 
 
 
-def tune_hyperparameters(args, config):
+def tune_hyperparameters(args, config, change_exp_name=True):
     args.defrost()
 
-    args.experiment.name = args.experiment.name + '_{}'.format(session.get_trial_id())
+    if change_exp_name:
+        args.experiment.name = args.experiment.name + '_{}'.format(session.get_trial_id())
 
     args.train.optimizer.lr = config["lr"]
 
@@ -118,6 +119,9 @@ if __name__ == '__main__':
             search_alg=hyperopt_search,
             num_samples=args.n_trials,
         ),
+        run_config=ray.air.config.RunConfig(
+            local_dir='/media/Zeus/ray_results'
+        ),
         param_space=config,
     )
     results = tuner.fit()
@@ -128,7 +132,7 @@ if __name__ == '__main__':
     print("Best trial final validation accuracy: {}".format(
         best_result.metrics["accuracy"]))
     
-    tune_hyperparameters(config_args, best_result.config)
+    tune_hyperparameters(config_args, best_result.config, change_exp_name=False)
     with open(args.config, 'w') as f:
         f.write(config_args.dump())
 
