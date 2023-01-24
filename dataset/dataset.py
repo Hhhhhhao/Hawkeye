@@ -2,6 +2,8 @@ import os
 import torch
 import pandas as pd
 from PIL import Image
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 from torch.utils.data.sampler import WeightedRandomSampler
 
 

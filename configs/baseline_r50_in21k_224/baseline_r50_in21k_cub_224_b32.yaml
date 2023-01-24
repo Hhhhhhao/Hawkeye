@@ -1,0 +1,36 @@
+dataset:
+  batch_size: 32
+  meta_dir: /media/Dormammu/haoc/hawkeye_fgvc/metadata/cub
+  name: cub
+  num_workers: 4
+  root_dir: /media/Auriga/datasets/CUB_200_2011/CUB_200_2011/images
+  transformer:
+    auto_aug: ta_wide
+    autoaug: null
+    image_size: 224
+    rand_erase: 0.24509652209980548
+    resize_size: 256
+experiment:
+  log_dir: /media/Dormammu/haoc/hawkeye_fgvc/results/base_res50_in21k_tune
+  name: ResNet50_IN21K_CUB200_224_None
+  seed: 42
+  tune: true
+  use_amp: false
+model:
+  name: ResNet50_IN21K
+  num_classes: 200
+train:
+  criterion:
+    name: CrossEntropyLoss
+  epoch: 30
+  optimizer:
+    clip_grad: null
+    lr: 0.00018396965834937035
+    momentum: 0.9
+    name: Adam
+    weight_decay: 0.00012371536404516588
+  save_frequence: 30
+  scheduler:
+    T_max: 30
+    eta_min: 1.0e-05
+    name: CosineAnnealingLR

@@ -31,7 +31,7 @@ class ClassificationPresetTrain:
             elif auto_augment_policy == "ta_wide":
                 trans.append(autoaugment.TrivialAugmentWide(interpolation=interpolation))
             else:
-                aa_policy = autoaugment.AutoAugmentPolicy(auto_augment_policy)
+                aa_policy = autoaugment.AutoAugmentPolicy("imagenet")
                 trans.append(autoaugment.AutoAugment(policy=aa_policy, interpolation=interpolation))
         trans.extend(
             [

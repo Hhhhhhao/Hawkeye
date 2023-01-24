@@ -8,7 +8,7 @@ from model.utils import load_state_dict
 from model.registry import BACKBONE, MODEL
 
 __all__ = [
-    'ResNet', 'resnet18', 'resnet34', 'resnet50', 'resnet101', 'resnet152', 'resnext50_32x4d', 'resnext101_32x8d',
+    'ResNet', 'resnet18', 'resnet34', 'resnet50', 'resnet50_in21k', 'resnet101', 'resnet152', 'resnext50_32x4d', 'resnext101_32x8d',
     'wide_resnet50_2', 'wide_resnet101_2',
     'ResNet50', 'ResNet101'
 ]
@@ -17,6 +17,7 @@ model_urls = {
     'resnet18': 'https://download.pytorch.org/models/resnet18-f37072fd.pth',
     'resnet34': 'https://download.pytorch.org/models/resnet34-b627a593.pth',
     'resnet50': 'https://download.pytorch.org/models/resnet50-0676ba61.pth',
+    'resnet50_in21k': 'https://miil-public-eu.oss-eu-central-1.aliyuncs.com/model-zoo/ImageNet_21K_P/models/resnet50_miil_21k.pth',
     'resnet101': 'https://download.pytorch.org/models/resnet101-63fe2227.pth',
     'resnet152': 'https://download.pytorch.org/models/resnet152-394f9c45.pth',
     'resnext50_32x4d': 'https://download.pytorch.org/models/resnext50_32x4d-7cdf4587.pth',
@@ -264,7 +265,11 @@ def _resnet(
 ) -> ResNet:
     model = ResNet(block, layers, **kwargs)
     if pretrained:
-        state_dict = load_state_dict_from_url(model_urls[arch], progress=progress)
+        checkpoint = load_state_dict_from_url(model_urls[arch], progress=progress)
+        if 'state_dict' in checkpoint:
+            state_dict = checkpoint['state_dict']
+        else:
+            state_dict = checkpoint
         load_state_dict(model, state_dict)
     return model
 
@@ -305,6 +310,20 @@ def resnet50(pretrained: bool = False, progress: bool = True, **kwargs: Any) -> 
         progress (bool): If True, displays a progress bar of the download to stderr
     """
     return _resnet('resnet50', Bottleneck, [3, 4, 6, 3], pretrained, progress,
+                   **kwargs)
+
+
+
+@BACKBONE.register
+def resnet50_in21k(pretrained: bool = False, progress: bool = True, **kwargs: Any) -> ResNet:
+    r"""ResNet-50 model from
+    `"Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>`_.
+
+    Args:
+        pretrained (bool): If True, returns a model pre-trained on ImageNet
+        progress (bool): If True, displays a progress bar of the download to stderr
+    """
+    return _resnet('resnet50_in21k', Bottleneck, [3, 4, 6, 3], pretrained, progress,
                    **kwargs)
 
 
@@ -406,6 +425,12 @@ def wide_resnet101_2(pretrained: bool = False, progress: bool = True, **kwargs: 
 def ResNet50(config):
     pretrained = config.pretrained if 'pretrained' in config else True
     return resnet50(pretrained=pretrained, num_classes=config.num_classes)
+
+
+@MODEL.register
+def ResNet50_IN21K(config):
+    pretrained = config.pretrained if 'pretrained' in config else True
+    return resnet50_in21k(pretrained=pretrained, num_classes=config.num_classes)
 
 
 @MODEL.register
