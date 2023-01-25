@@ -21,6 +21,7 @@ def tune_hyperparameters(args, config, change_exp_name=True):
 
     if change_exp_name:
         args.experiment.name = args.experiment.name + '_{}'.format(session.get_trial_id())
+        args.experiment.log_dir += '_tune'
 
     args.train.optimizer.lr = config["lr"]
 
@@ -80,7 +81,6 @@ if __name__ == '__main__':
         config_args = CN.load_cfg(f)
     # args.experiment.debug = True
     config_args.experiment.tune = True
-    config_args.experiment.log_dir += '_tune'
     config_args.freeze()
 
     if torch.cuda.is_available():

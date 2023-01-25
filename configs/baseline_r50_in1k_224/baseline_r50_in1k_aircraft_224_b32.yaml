@@ -5,12 +5,12 @@ dataset:
   num_workers: 4
   root_dir: /media/Zeus/datasets/fgvc-aircraft-2013b/data/images
   transformer:
-    auto_aug: ta_wide
+    auto_aug: auto_aug
     image_size: 224
-    rand_erase: 0.2
+    rand_erase: 0.0
     resize_size: 256
 experiment:
-  log_dir: /media/Zeus/hawkeye_fgvc/results/base_res50_tune
+  log_dir: /media/Zeus/hawkeye_fgvc/results/base_res50
   name: ResNet50_Aircraft_224
   seed: 42
   tune: true
@@ -24,10 +24,10 @@ train:
   epoch: 30
   optimizer:
     clip_grad: null
-    lr: 0.0001
+    lr: 0.00016
     momentum: 0.9
     name: Adam
-    weight_decay: 0.002
+    weight_decay: 0.028
   save_frequence: 30
   scheduler:
     T_max: 30

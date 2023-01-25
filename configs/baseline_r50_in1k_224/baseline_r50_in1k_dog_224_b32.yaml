@@ -7,10 +7,10 @@ dataset:
   transformer:
     auto_aug: ta_wide
     image_size: 224
-    rand_erase: 0.026424995501243394
+    rand_erase: 0.026
     resize_size: 256
 experiment:
-  log_dir: /media/Dormammu/haoc/hawkeye_fgvc/results/base_res50_tune
+  log_dir: /media/Dormammu/haoc/hawkeye_fgvc/results/base_res50
   name: ResNet50_Dogs_224
   seed: 42
   tune: true
@@ -24,10 +24,10 @@ train:
   epoch: 30
   optimizer:
     clip_grad: null
-    lr: 1.0043747937032744e-05
+    lr: 0.00001
     momentum: 0.9
     name: Adam
-    weight_decay: 0.001543263595937155
+    weight_decay: 0.0015
   save_frequence: 30
   scheduler:
     T_max: 30

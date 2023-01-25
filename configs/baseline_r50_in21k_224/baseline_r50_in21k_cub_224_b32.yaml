@@ -1,9 +1,9 @@
 dataset:
   batch_size: 32
-  meta_dir: /media/Dormammu/haoc/hawkeye_fgvc/metadata/cub
+  meta_dir: /media/Zeus/hawkeye_fgvc/metadata/cub
   name: cub
   num_workers: 4
-  root_dir: /media/Auriga/datasets/CUB_200_2011/CUB_200_2011/images
+  root_dir: /media/Zeus/datasets/CUB_200_2011/CUB_200_2011/images
   transformer:
     auto_aug: ta_wide
     autoaug: null
@@ -11,8 +11,8 @@ dataset:
     rand_erase: 0.24509652209980548
     resize_size: 256
 experiment:
-  log_dir: /media/Dormammu/haoc/hawkeye_fgvc/results/base_res50_in21k_tune
-  name: ResNet50_IN21K_CUB200_224_None
+  log_dir: /media/Zeus/hawkeye_fgvc/results/base_res50_in21k
+  name: ResNet50_IN21K_CUB200_224
   seed: 42
   tune: true
   use_amp: false

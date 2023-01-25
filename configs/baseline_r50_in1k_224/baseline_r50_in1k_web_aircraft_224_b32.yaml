@@ -7,10 +7,10 @@ dataset:
   transformer:
     auto_aug: ta_wide
     image_size: 224
-    rand_erase: 0.2
+    rand_erase: 0.04794543020980112
     resize_size: 256
 experiment:
-  log_dir: /media/Zeus/hawkeye_fgvc/results/base_res50_tune
+  log_dir: /media/Zeus/hawkeye_fgvc/results/base_res50
   name: ResNet50_WebAircraft_224
   seed: 42
   tune: true
@@ -24,10 +24,10 @@ train:
   epoch: 30
   optimizer:
     clip_grad: null
-    lr: 0.0001
+    lr: 8.670198627517481e-05
     momentum: 0.9
     name: Adam
-    weight_decay: 0.002
+    weight_decay: 0.00010139911437301347
   save_frequence: 30
   scheduler:
     T_max: 30
