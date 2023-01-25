@@ -13,7 +13,6 @@ experiment:
   log_dir: /media/Zeus/hawkeye_fgvc/results/base_res50
   name: ResNet50_WebAircraft_224
   seed: 42
-  tune: true
   use_amp: false
 model:
   name: ResNet50

@@ -36,8 +36,14 @@ def tune_hyperparameters(args, config, change_exp_name=True):
 
 
 
-def objective(config, args):    
+def objective(config, config_path):    
 
+
+    with open(config_path) as f:
+        args = CN.load_cfg(f)
+    # args.experiment.debug = True
+    args.experiment.tune = True
+    args.freeze()
 
     # TODO: add prefetcher
     # args.prefetcher = not args.no_prefetcher
@@ -77,12 +83,6 @@ if __name__ == '__main__':
     parser.add_argument('--n_trials', type=int, default=1, help="number of trails for  tuning")
     args = parser.parse_args()
 
-    with open(args.config) as f:
-        config_args = CN.load_cfg(f)
-    # args.experiment.debug = True
-    config_args.experiment.tune = True
-    config_args.freeze()
-
     if torch.cuda.is_available():
         torch.backends.cuda.matmul.allow_tf32 = True
         torch.backends.cudnn.benchmark = True
@@ -111,7 +111,7 @@ if __name__ == '__main__':
         metric="accuracy", mode="max")
     tuner = tune.Tuner(
         tune.with_resources(
-            tune.with_parameters(partial(objective, args=config_args)),
+            tune.with_parameters(partial(objective, config_path=args.config)),
             resources={"cpu": args.n_cpu, "gpu": args.n_gpu}
         ),
         tune_config=tune.TuneConfig(
@@ -132,6 +132,8 @@ if __name__ == '__main__':
     print("Best trial final validation accuracy: {}".format(
         best_result.metrics["accuracy"]))
     
+    with open(args.config) as f:
+        config_args = CN.load_cfg(f)
     tune_hyperparameters(config_args, best_result.config, change_exp_name=False)
     with open(args.config, 'w') as f:
         f.write(config_args.dump())

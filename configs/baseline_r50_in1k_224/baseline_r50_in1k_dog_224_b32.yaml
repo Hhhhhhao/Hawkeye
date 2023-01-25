@@ -10,10 +10,9 @@ dataset:
     rand_erase: 0.026
     resize_size: 256
 experiment:
-  log_dir: /media/Dormammu/haoc/hawkeye_fgvc/results/base_res50
+  log_dir: /media/Zeus/hawkeye_fgvc/results/base_res50
   name: ResNet50_Dogs_224
   seed: 42
-  tune: true
   use_amp: false
 model:
   name: ResNet50
