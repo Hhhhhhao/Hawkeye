@@ -1,0 +1,34 @@
+dataset:
+  batch_size: 32
+  meta_dir: /media/Dormammu/haoc/hawkeye_fgvc/metadata/aircraft
+  name: aircraft
+  num_workers: 4
+  root_dir: /media/Auriga/datasets/fgvc-aircraft-2013b/data/images
+  transformer:
+    auto_aug: auto_aug
+    image_size: 224
+    rand_erase: 0.09667841161577004
+    resize_size: 256
+experiment:
+  log_dir: /media/Dormammu/haoc/hawkeye_fgvc/results/base_vit_base_in21k
+  name: ViT_Base_IN21K_Aircraft_224
+  seed: 42
+  use_amp: false
+model:
+  name: ViT_Base_P16_IN21K
+  num_classes: 100
+train:
+  criterion:
+    name: CrossEntropyLoss
+  epoch: 30
+  optimizer:
+    clip_grad: null
+    lr: 6.507073175247605e-05
+    momentum: 0.9
+    name: Adam
+    weight_decay: 0.00026281591537004426
+  save_frequence: 30
+  scheduler:
+    T_max: 30
+    eta_min: 1.0e-05
+    name: CosineAnnealingLR

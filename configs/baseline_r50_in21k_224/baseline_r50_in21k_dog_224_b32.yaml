@@ -18,7 +18,7 @@ experiment:
   use_amp: false
 model:
   name: ResNet50_IN21K
-  num_classes: 196
+  num_classes: 120
 train:
   criterion:
     name: CrossEntropyLoss

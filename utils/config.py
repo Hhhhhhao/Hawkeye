@@ -14,6 +14,7 @@ def setup_config():
             cfg = CN.load_cfg(f)
     else:
         cfg = _get_default_config()
+    cfg.model.img_size = cfg.dataset.transformer.image_size
     cfg.freeze()
     return cfg
 
