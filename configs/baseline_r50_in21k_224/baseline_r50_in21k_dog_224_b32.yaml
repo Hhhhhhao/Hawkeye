@@ -5,7 +5,7 @@ dataset:
   num_workers: 4
   root_dir: /media/Zeus/datasets/Stanford_Dog/Images
   transformer:
-    auto_aug: auto_aug
+    auto_aug: ta_wide
     autoaug: ta_wide
     image_size: 224
     rand_erase: 0.2

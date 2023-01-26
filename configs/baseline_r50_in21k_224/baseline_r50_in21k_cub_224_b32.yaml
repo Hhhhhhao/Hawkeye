@@ -8,7 +8,7 @@ dataset:
     auto_aug: ta_wide
     autoaug: null
     image_size: 224
-    rand_erase: 0.24509652209980548
+    rand_erase: 0.13
     resize_size: 256
 experiment:
   log_dir: /media/Zeus/hawkeye_fgvc/results/base_res50_in21k
@@ -25,10 +25,10 @@ train:
   epoch: 30
   optimizer:
     clip_grad: null
-    lr: 0.00018396965834937035
+    lr: 0.00016
     momentum: 0.9
     name: Adam
-    weight_decay: 0.00012371536404516588
+    weight_decay: 0.048
   save_frequence: 30
   scheduler:
     T_max: 30
