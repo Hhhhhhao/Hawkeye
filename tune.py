@@ -42,6 +42,7 @@ def objective(config, config_path):
     with open(config_path) as f:
         args = CN.load_cfg(f)
     # args.experiment.debug = True
+    args.model.img_size = args.dataset.transformer.image_size
     args.experiment.tune = True
     args.freeze()
 
@@ -120,7 +121,7 @@ if __name__ == '__main__':
             num_samples=args.n_trials,
         ),
         run_config=ray.air.config.RunConfig(
-            local_dir='/media/Zeus/ray_results'
+            local_dir='/media/Dormammu/haoc/ray_results'
         ),
         param_space=config,
     )
