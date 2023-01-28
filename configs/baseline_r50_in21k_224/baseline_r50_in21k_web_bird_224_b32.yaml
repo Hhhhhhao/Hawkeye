@@ -10,7 +10,7 @@ dataset:
     rand_erase: 0.13
     resize_size: 256
 experiment:
-  log_dir: /media/Zeus/haoc/hawkeye_fgvc/results/base_res50_in21k
+  log_dir: /media/Zeus/hawkeye_fgvc/results/base_res50_in21k
   name: ResNet50_IN21K_WebBird_224
   seed: 42
   use_amp: false

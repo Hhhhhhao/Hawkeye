@@ -6,7 +6,6 @@ dataset:
   root_dir: /media/Zeus/datasets/Stanford_Car/
   transformer:
     auto_aug: auto_aug
-    autoaug: ta_wide
     image_size: 224
     rand_erase: 0.14
     resize_size: 256

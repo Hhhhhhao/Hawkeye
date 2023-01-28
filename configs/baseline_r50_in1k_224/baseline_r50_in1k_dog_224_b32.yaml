@@ -1,7 +1,7 @@
 dataset:
   batch_size: 32
   meta_dir: /media/Zeus/hawkeye_fgvc/metadata/dog
-  name: car
+  name: dog
   num_workers: 4
   root_dir: /media/Zeus/datasets/Stanford_Dog/Images
   transformer:

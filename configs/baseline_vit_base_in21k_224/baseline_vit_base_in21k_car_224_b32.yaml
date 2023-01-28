@@ -1,16 +1,16 @@
 dataset:
   batch_size: 32
-  meta_dir: /media/Dormammu/haoc/hawkeye_fgvc/metadata/car
+  meta_dir: /media/Zeus/awkeye_fgvc/metadata/car
   name: car
   num_workers: 4
-  root_dir: /media/Auriga/datasets/Stanford_Car
+  root_dir: /media/Zeus/datasets/Stanford_Car
   transformer:
     auto_aug: auto_aug
     image_size: 224
     rand_erase: 0.18494359538166996
     resize_size: 256
 experiment:
-  log_dir: /media/Dormammu/haoc/hawkeye_fgvc/results/base_vit_base_in21k
+  log_dir: /media/Zeus/hawkeye_fgvc/results/base_vit_base_in21k
   name: ViT_Base_IN21K_Cars_224
   seed: 42
   use_amp: false
