@@ -1,13 +1,13 @@
 dataset:
   batch_size: 32
-  meta_dir: /media/Zeus/awkeye_fgvc/metadata/car
+  meta_dir: /media/Zeus/hawkeye_fgvc/metadata/car
   name: car
   num_workers: 4
   root_dir: /media/Zeus/datasets/Stanford_Car
   transformer:
     auto_aug: auto_aug
     image_size: 224
-    rand_erase: 0.18494359538166996
+    rand_erase: 0.2
     resize_size: 256
 experiment:
   log_dir: /media/Zeus/hawkeye_fgvc/results/base_vit_base_in21k
@@ -20,15 +20,15 @@ model:
 train:
   criterion:
     name: CrossEntropyLoss
-  epoch: 30
+  epoch: 50
   optimizer:
     clip_grad: null
-    lr: 5.8602208769639765e-05
+    lr: 6.0e-05
     momentum: 0.9
     name: Adam
-    weight_decay: 0.0001410505108053846
-  save_frequence: 30
+    weight_decay: 0.00014
+  save_frequence: 50
   scheduler:
-    T_max: 30
-    eta_min: 1.0e-05
+    T_max: 50
+    eta_min: 1.0e-08
     name: CosineAnnealingLR

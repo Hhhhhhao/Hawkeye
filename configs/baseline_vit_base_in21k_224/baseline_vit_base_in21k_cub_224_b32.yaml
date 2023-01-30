@@ -7,7 +7,7 @@ dataset:
   transformer:
     auto_aug: ta_wide
     image_size: 224
-    rand_erase: 0.1450112978330128
+    rand_erase: 0.15
     resize_size: 256
 experiment:
   log_dir: /media/Zeus/hawkeye_fgvc/results/base_vit_base_in21k
@@ -20,15 +20,15 @@ model:
 train:
   criterion:
     name: CrossEntropyLoss
-  epoch: 30
+  epoch: 50
   optimizer:
     clip_grad: null
-    lr: 4.390311377984881e-05
+    lr: 4.4e-05
     momentum: 0.9
     name: Adam
-    weight_decay: 0.00011657813402534243
-  save_frequence: 30
+    weight_decay: 0.0001
+  save_frequence: 50
   scheduler:
-    T_max: 30
-    eta_min: 1.0e-05
+    T_max: 50
+    eta_min: 1.0e-08
     name: CosineAnnealingLR
