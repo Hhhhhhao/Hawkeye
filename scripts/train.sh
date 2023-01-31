@@ -1,4 +1,4 @@
-model='baseline_r50_in1k_224'
+model='baseline_vit_base_in21k_224'
 n_gpu=1
 
 declare -i cnt

@@ -121,7 +121,7 @@ if __name__ == '__main__':
             num_samples=args.n_trials,
         ),
         run_config=ray.air.config.RunConfig(
-            local_dir='/media/Dormammu/haoc/ray_results'
+            local_dir='/media/Zeus/ray_results'
         ),
         param_space=config,
     )

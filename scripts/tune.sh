@@ -7,7 +7,7 @@ do
     esac
 done
 
-folder="configs/$model"
+folder="/media/Zeus/hawkeye_fgvc/configs/$model"
 for entry in "$folder"/*
 do
     echo "$entry"
