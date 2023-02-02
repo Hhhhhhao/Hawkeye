@@ -1,0 +1,92 @@
+description: baseline_resnet50_224 tune tasks
+target:
+ service: sing
+ name: msroctovc
+ workspace_name: msroctows
+environment:
+ image:  amlt-sing/pytorch-1.8.0
+ setup:
+  - python -m pip install -U pip
+  - pip install pyyaml
+  - pip install -U "ray[default]"
+  - pip install tensorboard
+  - pip install -U scikit-learn
+  - pip install matplotlib
+  - pip install progress
+  - pip install pandas
+  - pip install tensorboardx
+  - pip install tqdm
+  - pip install yacs
+  - python -m pip install -U scikit-image
+  - pip install timm
+  - pip install tqdm
+  - pip install --upgrade ruamel.yaml --ignore-installed ruamel.yaml 
+  - pip install --upgrade torchvision 
+  - pip install hyperopt
+  - pip install 'protobuf<=3.20.1' --force-reinstall
+  - pwd 
+
+code:
+ local_dir: ./
+storage:
+ hawkeye_fgvc:
+  storage_account_name: transferlearningdrive
+  container_name: teamdrive
+  is_output: True
+jobs:
+- name: baseline_resnet50_224_aircraft
+  sku: NDv2g1:16G1-V100
+  sla_tier: premium
+  command:
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_aircraft_224_b32_seed123.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_aircraft_224_b32_seed42.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_aircraft_224_b32_seed7.yaml
+
+- name: baseline_resnet50_224_car
+  sku: NDv2g1:16G1-V100
+  sla_tier: premium
+  command:
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_car_224_b32_seed123.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_car_224_b32_seed42.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_car_224_b32_seed7.yaml
+
+- name: baseline_resnet50_224_cub
+  sku: NDv2g1:16G1-V100
+  sla_tier: premium
+  command:
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_cub_224_b32_seed123.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_cub_224_b32_seed42.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_cub_224_b32_seed7.yaml
+
+- name: baseline_resnet50_224_dog
+  sku: NDv2g1:16G1-V100
+  sla_tier: premium
+  command:
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_dog_224_b32_seed123.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_dog_224_b32_seed42.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_dog_224_b32_seed7.yaml
+
+- name: baseline_resnet50_224_web_aircraft
+  sku: NDv2g1:16G1-V100
+  sla_tier: premium
+  command:
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_web_aircraft_224_b32_seed123.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_web_aircraft_224_b32_seed42.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_web_aircraft_224_b32_seed7.yaml
+
+- name: baseline_resnet50_224_web_bird
+  sku: NDv2g1:16G1-V100
+  sla_tier: premium
+  command:
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_web_bird_224_b32_seed123.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_web_bird_224_b32_seed42.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_web_bird_224_b32_seed7.yaml
+
+- name: baseline_resnet50_224_web_car
+  sku: NDv2g1:16G1-V100
+  sla_tier: premium
+  command:
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_web_car_224_b32_seed123.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_web_car_224_b32_seed42.yaml
+  - python train.py --config /tmp/code/configs/baseline_resnet50_224/baseline_resnet50_web_car_224_b32_seed7.yaml
+

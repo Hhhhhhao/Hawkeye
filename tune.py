@@ -121,7 +121,7 @@ if __name__ == '__main__':
             num_samples=args.n_trials,
         ),
         run_config=ray.air.config.RunConfig(
-            local_dir='/media/Zeus/ray_results'
+            local_dir='./ray_results'
         ),
         param_space=config,
     )
@@ -133,11 +133,12 @@ if __name__ == '__main__':
     print("Best trial final validation accuracy: {}".format(
         best_result.metrics["accuracy"]))
     
+    import json
     with open(args.config) as f:
         config_args = CN.load_cfg(f)
-    tune_hyperparameters(config_args, best_result.config, change_exp_name=False)
-    with open(args.config, 'w') as f:
-        f.write(config_args.dump())
+    # tune_hyperparameters(config_args, best_result.config, change_exp_name=False)
+    with open(config_args.experiment.log_dir+'_tune/best_config.yaml', 'w') as f:
+        json.dump(best_result.config, f)
 
     
 

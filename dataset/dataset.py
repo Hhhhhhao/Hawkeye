@@ -26,7 +26,7 @@ class FGDataset(torch.utils.data.Dataset):
     def __init__(self, root, meta_path, transform=None, return_id=False, loader=default_loader):
         self.root = root
 
-        if 'web-car' in root or 'web-aircraft' in root:
+        if 'web_car' in root or 'web_aircraft' in root:
             self.images = pd.read_csv(meta_path, sep=',', names=['label', 'path'])
         else:
             self.images = pd.read_csv(meta_path, sep=' ', names=['label', 'path'])

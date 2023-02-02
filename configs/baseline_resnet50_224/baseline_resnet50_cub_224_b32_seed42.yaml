@@ -1,0 +1,34 @@
+dataset:
+  batch_size: 32
+  meta_dir: /tmp/code/metadata/cub
+  name: cub
+  num_workers: 4
+  root_dir: /mnt/default/datasets/hawkeye_datasets/datasets/CUB_200_2011/CUB_200_2011/images
+  transformer:
+    auto_aug: ta_wide
+    image_size: 224
+    rand_erase: 0.16900529031967784
+    resize_size: 256
+experiment:
+  log_dir: /mnt/default/projects/hawkeye_fgvc_2023/v1/baseline_resnet50
+  name: resnet50_cub_224
+  seed: 0
+  use_amp: false
+model:
+  name: ResNet50
+  num_classes: 200
+train:
+  criterion:
+    name: CrossEntropyLoss
+  epoch: 50
+  optimizer:
+    clip_grad: null
+    lr: 5.4561622911098524e-05
+    momentum: 0.9
+    name: Adam
+    weight_decay: 0.0033303734047594176
+  save_frequence: 50
+  scheduler:
+    T_max: 50
+    eta_min: 1.0e-08
+    name: CosineAnnealingLR
