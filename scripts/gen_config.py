@@ -18,7 +18,7 @@ def create_config(pipeline_name='baseline', model_name='ResNet50', dataset_name=
     # save_dir = './results'
     save_dir = '/mnt/default/projects/fgvc_2023/v1/'
     # data_dir = './data'
-    data_dir = '/mnt/default/datasets/fgvc_datasets/datasets'
+    data_dir = '/mnt/default/dataset/fgvc_datasets/datasets'
 
     # experiments
     cfg.experiment = CN()

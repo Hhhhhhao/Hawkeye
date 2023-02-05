@@ -3,7 +3,7 @@ dataset:
   meta_dir: /tmp/code/metadata/cub
   name: cub
   num_workers: 4
-  root_dir: /mnt/default/datasets/fgvc_datasets/datasets/CUB_200_2011/CUB_200_2011/images
+  root_dir: /mnt/default/dataset/fgvc_datasets/datasets/CUB_200_2011/CUB_200_2011/images
   transformer:
     auto_aug: null
     image_size: 224

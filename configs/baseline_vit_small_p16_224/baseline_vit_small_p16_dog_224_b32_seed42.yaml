@@ -3,7 +3,7 @@ dataset:
   meta_dir: /tmp/code/metadata/dog
   name: dog
   num_workers: 4
-  root_dir: /mnt/default/datasets/fgvc_datasets/datasets/Stanford_Dog/Images
+  root_dir: /mnt/default/dataset/fgvc_datasets/datasets/Stanford_Dog/Images
   transformer:
     auto_aug: rand_aug
     image_size: 224

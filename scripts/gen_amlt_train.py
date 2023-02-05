@@ -66,7 +66,10 @@ def write_jobs(sku='G1', target_service='sing', target_name='msroctows', sla_tie
         w.write(' '+' '+'storage_account_name:'+' '+storage_account_name+'\n')
         w.write(' '+' '+'container_name:'+' '+container_name+'\n')
         w.write(' '+' '+'is_output:'+' '+'True'+'\n')
-
+        # w.write(' '+'data'+':'+'\n')
+        # w.write(' '+' '+'storage_account_name:'+' '+storage_account_name+'\n')
+        # w.write(' '+' '+'container_name:'+' '+container_name+'\n')
+        # w.write(' '+' '+'mount:'+' '+'True'+'\n')
         w.write('jobs:'+'\n')
 
     
