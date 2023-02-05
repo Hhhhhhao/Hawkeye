@@ -3,16 +3,16 @@ dataset:
   meta_dir: /tmp/code/metadata/car
   name: car
   num_workers: 4
-  root_dir: /mnt/default/datasets/hawkeye_datasets/datasets/Stanford_Car
+  root_dir: /mnt/default/datasets/fgvc_datasets/datasets/Stanford_Car
   transformer:
     auto_aug: auto_aug
     image_size: 224
-    rand_erase: 0.21409383823667613
+    rand_erase: 0.2141
     resize_size: 256
 experiment:
-  log_dir: /mnt/default/projects/hawkeye_fgvc_2023/v1/baseline_resnet50_in21k
-  name: resnet50_in21k_car_224
-  seed: 0
+  log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_resnet50_in21k
+  name: resnet50_in21k_car_224_7
+  seed: 7
   use_amp: false
 model:
   name: ResNet50_IN21K
@@ -23,10 +23,10 @@ train:
   epoch: 50
   optimizer:
     clip_grad: null
-    lr: 0.0003543563428635993
+    lr: 0.000354
     momentum: 0.9
     name: Adam
-    weight_decay: 0.08151332706548033
+    weight_decay: 0.081513
   save_frequence: 50
   scheduler:
     T_max: 50

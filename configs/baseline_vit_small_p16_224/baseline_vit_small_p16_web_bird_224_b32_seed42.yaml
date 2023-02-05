@@ -3,16 +3,16 @@ dataset:
   meta_dir: /tmp/code/metadata/web_bird
   name: web_bird
   num_workers: 4
-  root_dir: /mnt/default/datasets/hawkeye_datasets/datasets/web_bird
+  root_dir: /mnt/default/datasets/fgvc_datasets/datasets/web_bird
   transformer:
     auto_aug: ta_wide
     image_size: 224
-    rand_erase: 0.07644547509096733
+    rand_erase: 0.0764
     resize_size: 256
 experiment:
-  log_dir: /mnt/default/projects/hawkeye_fgvc_2023/v1/baseline_vit_small_p16
-  name: vit_small_p16_web_bird_224
-  seed: 0
+  log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_vit_small_p16
+  name: vit_small_p16_web_bird_224_42
+  seed: 42
   use_amp: false
 model:
   name: ViT_Small_P16
@@ -23,10 +23,10 @@ train:
   epoch: 50
   optimizer:
     clip_grad: null
-    lr: 2.5056802019390606e-05
+    lr: 2.5e-05
     momentum: 0.9
     name: Adam
-    weight_decay: 0.07488224997993609
+    weight_decay: 0.074882
   save_frequence: 50
   scheduler:
     T_max: 50

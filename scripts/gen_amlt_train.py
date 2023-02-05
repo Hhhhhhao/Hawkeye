@@ -38,8 +38,8 @@ def write_jobs(sku='G1', target_service='sing', target_name='msroctows', sla_tie
     #storage:
     yaml_name = f'{model_name}'
     filepath = 'hawkeye_fgvc'
-    storage_account_name = 'transferlearningdrive'
-    container_name = 'teamdrive'
+    storage_account_name = 'ussclowpriv100data'
+    container_name = 'jindwang'
     os.makedirs(f'./amlt_config', exist_ok=True)
     with open(f'./amlt_config/' + yaml_name + '.yaml', 'w', encoding='utf-8') as w:
         w.write('description:'+' '+ description+'\n')

@@ -16,14 +16,14 @@ def create_config(pipeline_name='baseline', model_name='ResNet50', dataset_name=
     # base_dir = '.'
     base_dir = '/tmp/code'
     # save_dir = './results'
-    save_dir = '/mnt/default/projects/hawkeye_fgvc_2023/v1/'
+    save_dir = '/mnt/default/projects/fgvc_2023/v1/'
     # data_dir = './data'
-    data_dir = '/mnt/default/datasets/hawkeye_datasets/datasets'
+    data_dir = '/mnt/default/datasets/fgvc_datasets/datasets'
 
     # experiments
     cfg.experiment = CN()
     cfg.experiment.log_dir = os.path.join(save_dir, f'{pipeline_name}_{model_name.lower()}')
-    cfg.experiment.name = f'{model_name.lower()}_{dataset_name.lower()}_{image_size}'
+    cfg.experiment.name = f'{model_name.lower()}_{dataset_name.lower()}_{image_size}_{seed}'
     cfg.experiment.seed = seed
     cfg.experiment.use_amp = use_amp
 
@@ -118,7 +118,7 @@ def gen_exp(pipeline_name, model_name, image_size):
         for seed in seeds:
             cfg = create_config(
                 pipeline_name=pipeline_name, model_name=model_name, dataset_name=dataset_name, data_path=data_path,
-                image_size=image_size, crop_ratio=0.875, num_classes=num_classes, epochs=50
+                image_size=image_size, crop_ratio=0.875, num_classes=num_classes, epochs=50, seed=seed
             )
             cfg = load_tune_param(cfg, pipeline_name=pipeline_name, model_name=model_name, image_size=image_size, dataset_name=dataset_name)
             

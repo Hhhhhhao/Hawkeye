@@ -3,16 +3,16 @@ dataset:
   meta_dir: /tmp/code/metadata/aircraft
   name: aircraft
   num_workers: 4
-  root_dir: /mnt/default/datasets/hawkeye_datasets/datasets/fgvc-aircraft-2013b/data/images
+  root_dir: /mnt/default/datasets/fgvc_datasets/datasets/fgvc-aircraft-2013b/data/images
   transformer:
     auto_aug: auto_aug
     image_size: 224
-    rand_erase: 0.06981532141226882
+    rand_erase: 0.0698
     resize_size: 256
 experiment:
-  log_dir: /mnt/default/projects/hawkeye_fgvc_2023/v1/baseline_resnet50
-  name: resnet50_aircraft_224
-  seed: 0
+  log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_resnet50
+  name: resnet50_aircraft_224_123
+  seed: 123
   use_amp: false
 model:
   name: ResNet50
@@ -23,10 +23,10 @@ train:
   epoch: 50
   optimizer:
     clip_grad: null
-    lr: 0.0001133106634884965
+    lr: 0.000113
     momentum: 0.9
     name: Adam
-    weight_decay: 0.001688419786757222
+    weight_decay: 0.001688
   save_frequence: 50
   scheduler:
     T_max: 50

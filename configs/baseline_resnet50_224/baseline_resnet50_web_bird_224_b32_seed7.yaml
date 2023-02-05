@@ -3,16 +3,16 @@ dataset:
   meta_dir: /tmp/code/metadata/web_bird
   name: web_bird
   num_workers: 4
-  root_dir: /mnt/default/datasets/hawkeye_datasets/datasets/web_bird
+  root_dir: /mnt/default/datasets/fgvc_datasets/datasets/web_bird
   transformer:
     auto_aug: null
     image_size: 224
-    rand_erase: 0.02045132361634866
+    rand_erase: 0.0205
     resize_size: 256
 experiment:
-  log_dir: /mnt/default/projects/hawkeye_fgvc_2023/v1/baseline_resnet50
-  name: resnet50_web_bird_224
-  seed: 0
+  log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_resnet50
+  name: resnet50_web_bird_224_7
+  seed: 7
   use_amp: false
 model:
   name: ResNet50
@@ -23,10 +23,10 @@ train:
   epoch: 50
   optimizer:
     clip_grad: null
-    lr: 2.4713792065377816e-05
+    lr: 2.5e-05
     momentum: 0.9
     name: Adam
-    weight_decay: 0.0054369964830616605
+    weight_decay: 0.005437
   save_frequence: 50
   scheduler:
     T_max: 50

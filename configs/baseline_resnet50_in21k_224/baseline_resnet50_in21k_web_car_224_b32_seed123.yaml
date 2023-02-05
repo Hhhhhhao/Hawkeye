@@ -3,16 +3,16 @@ dataset:
   meta_dir: /tmp/code/metadata/web_car
   name: web_car
   num_workers: 4
-  root_dir: /mnt/default/datasets/hawkeye_datasets/datasets/web_car
+  root_dir: /mnt/default/datasets/fgvc_datasets/datasets/web_car
   transformer:
     auto_aug: rand_aug
     image_size: 224
-    rand_erase: 0.22765365008092553
+    rand_erase: 0.2277
     resize_size: 256
 experiment:
-  log_dir: /mnt/default/projects/hawkeye_fgvc_2023/v1/baseline_resnet50_in21k
-  name: resnet50_in21k_web_car_224
-  seed: 0
+  log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_resnet50_in21k
+  name: resnet50_in21k_web_car_224_123
+  seed: 123
   use_amp: false
 model:
   name: ResNet50_IN21K
@@ -23,10 +23,10 @@ train:
   epoch: 50
   optimizer:
     clip_grad: null
-    lr: 0.0007197399926254854
+    lr: 0.00072
     momentum: 0.9
     name: Adam
-    weight_decay: 0.00020841410381046123
+    weight_decay: 0.000208
   save_frequence: 50
   scheduler:
     T_max: 50

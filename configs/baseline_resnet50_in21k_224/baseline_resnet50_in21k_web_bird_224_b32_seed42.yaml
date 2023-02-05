@@ -3,16 +3,16 @@ dataset:
   meta_dir: /tmp/code/metadata/web_bird
   name: web_bird
   num_workers: 4
-  root_dir: /mnt/default/datasets/hawkeye_datasets/datasets/web_bird
+  root_dir: /mnt/default/datasets/fgvc_datasets/datasets/web_bird
   transformer:
     auto_aug: ta_wide
     image_size: 224
     rand_erase: 0.2
     resize_size: 256
 experiment:
-  log_dir: /mnt/default/projects/hawkeye_fgvc_2023/v1/baseline_resnet50_in21k
-  name: resnet50_in21k_web_bird_224
-  seed: 0
+  log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_resnet50_in21k
+  name: resnet50_in21k_web_bird_224_42
+  seed: 42
   use_amp: false
 model:
   name: ResNet50_IN21K

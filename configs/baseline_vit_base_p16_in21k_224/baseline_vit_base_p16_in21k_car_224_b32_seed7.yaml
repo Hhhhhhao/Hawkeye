@@ -3,16 +3,16 @@ dataset:
   meta_dir: /tmp/code/metadata/car
   name: car
   num_workers: 4
-  root_dir: /mnt/default/datasets/hawkeye_datasets/datasets/Stanford_Car
+  root_dir: /mnt/default/datasets/fgvc_datasets/datasets/Stanford_Car
   transformer:
     auto_aug: null
     image_size: 224
     rand_erase: 0.0
     resize_size: 256
 experiment:
-  log_dir: /mnt/default/projects/hawkeye_fgvc_2023/v1/baseline_vit_base_p16_in21k
-  name: vit_base_p16_in21k_car_224
-  seed: 0
+  log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_vit_base_p16_in21k
+  name: vit_base_p16_in21k_car_224_7
+  seed: 7
   use_amp: false
 model:
   name: ViT_Base_P16_IN21K

@@ -3,16 +3,16 @@ dataset:
   meta_dir: /tmp/code/metadata/web_aircraft
   name: web_aircraft
   num_workers: 4
-  root_dir: /mnt/default/datasets/hawkeye_datasets/datasets/web_aircraft
+  root_dir: /mnt/default/datasets/fgvc_datasets/datasets/web_aircraft
   transformer:
     auto_aug: rand_aug
     image_size: 224
-    rand_erase: 0.14735711595237513
+    rand_erase: 0.1474
     resize_size: 256
 experiment:
-  log_dir: /mnt/default/projects/hawkeye_fgvc_2023/v1/baseline_vit_small_p16
-  name: vit_small_p16_web_aircraft_224
-  seed: 0
+  log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_vit_small_p16
+  name: vit_small_p16_web_aircraft_224_123
+  seed: 123
   use_amp: false
 model:
   name: ViT_Small_P16
@@ -23,10 +23,10 @@ train:
   epoch: 50
   optimizer:
     clip_grad: null
-    lr: 4.9742723927317464e-05
+    lr: 5.0e-05
     momentum: 0.9
     name: Adam
-    weight_decay: 0.009282541353721033
+    weight_decay: 0.009283
   save_frequence: 50
   scheduler:
     T_max: 50

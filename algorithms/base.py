@@ -65,7 +65,7 @@ class Trainer(object):
 
         # log root directory should not already exist
         if not self.resume and not self.debug and utils.is_primary(config):
-            assert not os.path.exists(self.log_root), 'Experiment log folder already exists!!'
+            # assert not os.path.exists(self.log_root), 'Experiment log folder already exists!!'
             # create log root directory and copy
             os.makedirs(self.log_root)
             print(f'Created log directory: {self.log_root}')

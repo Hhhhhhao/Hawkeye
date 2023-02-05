@@ -3,16 +3,16 @@ dataset:
   meta_dir: /tmp/code/metadata/cub
   name: cub
   num_workers: 4
-  root_dir: /mnt/default/datasets/hawkeye_datasets/datasets/CUB_200_2011/CUB_200_2011/images
+  root_dir: /mnt/default/datasets/fgvc_datasets/datasets/CUB_200_2011/CUB_200_2011/images
   transformer:
     auto_aug: ta_wide
     image_size: 224
-    rand_erase: 0.22143194237884264
+    rand_erase: 0.2214
     resize_size: 256
 experiment:
-  log_dir: /mnt/default/projects/hawkeye_fgvc_2023/v1/baseline_resnet50_in21k
-  name: resnet50_in21k_cub_224
-  seed: 0
+  log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_resnet50_in21k
+  name: resnet50_in21k_cub_224_42
+  seed: 42
   use_amp: false
 model:
   name: ResNet50_IN21K
@@ -23,10 +23,10 @@ train:
   epoch: 50
   optimizer:
     clip_grad: null
-    lr: 8.072084042996997e-05
+    lr: 8.1e-05
     momentum: 0.9
     name: Adam
-    weight_decay: 0.0004433424841767719
+    weight_decay: 0.000443
   save_frequence: 50
   scheduler:
     T_max: 50

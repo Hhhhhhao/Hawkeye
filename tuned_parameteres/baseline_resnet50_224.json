@@ -1,44 +1,44 @@
 {
     "aircraft": {
-        "lr": 0.0001133106634884965,
-        "weight_decay": 0.001688419786757222,
+        "lr": 0.000113,
+        "weight_decay": 0.001688,
         "auto_aug": "auto_aug",
-        "rand_erase": 0.06981532141226882
+        "rand_erase": 0.0698
     },
     "car": {
-        "lr": 0.00010713522094044622,
-        "weight_decay": 0.004241361138145246,
+        "lr": 0.000107,
+        "weight_decay": 0.004241,
         "auto_aug": "auto_aug",
-        "rand_erase": 0.15705309002514045
+        "rand_erase": 0.1571
     },
     "cub": {
-        "lr": 5.4561622911098524e-05,
-        "weight_decay": 0.0033303734047594176,
+        "lr": 5.5e-05,
+        "weight_decay": 0.00333,
         "auto_aug": "ta_wide",
-        "rand_erase": 0.16900529031967784
+        "rand_erase": 0.169
     },
     "dog": {
-        "lr": 1.1425400579568412e-05,
-        "weight_decay": 0.005110553898317856,
+        "lr": 1.1e-05,
+        "weight_decay": 0.005111,
         "auto_aug": null,
-        "rand_erase": 0.17014284802816704
+        "rand_erase": 0.1701
     },
     "web_aircraft": {
-        "lr": 0.00011006902918066039,
-        "weight_decay": 0.004695803870704579,
+        "lr": 0.00011,
+        "weight_decay": 0.004696,
         "auto_aug": "auto_aug",
-        "rand_erase": 0.055991055705633896
+        "rand_erase": 0.056
     },
     "web_bird": {
-        "lr": 2.4713792065377816e-05,
-        "weight_decay": 0.0054369964830616605,
+        "lr": 2.5e-05,
+        "weight_decay": 0.005437,
         "auto_aug": null,
-        "rand_erase": 0.02045132361634866
+        "rand_erase": 0.0205
     },
     "web_car": {
-        "lr": 0.00016627692967950352,
-        "weight_decay": 0.0002935631913282717,
+        "lr": 0.000166,
+        "weight_decay": 0.000294,
         "auto_aug": "rand_aug",
-        "rand_erase": 0.00835959618591016
+        "rand_erase": 0.0084
     }
 }

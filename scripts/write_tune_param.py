@@ -9,9 +9,9 @@ import subprocess
 def get_param(file_name):
 
     re_lr = r"lr': (([0-9]|\.|-|e)*)"
-    re_wd = r"weight_decay': (([0-9]|\.)*)"
+    re_wd = r"weight_decay': (([0-9]|\.|-|e)*)"
     re_auto_aug = r"auto_aug': ((\w|')*),"
-    re_rand_e = r"rand_erase': (([0-9]|\.)*)"
+    re_rand_e = r"rand_erase': (([0-9]|\.|e|-)*)"
 
 
     with open(file_name, 'r', encoding='utf-8') as f:
@@ -31,10 +31,10 @@ def get_param(file_name):
 
     
     param = {
-        'lr': float(lr),
-        'weight_decay': float(weight_decay),
+        'lr': round(float(lr), 6),
+        'weight_decay': round(float(weight_decay), 6),
         'auto_aug': auto_aug,
-        'rand_erase': float(rand_erase)
+        'rand_erase': round(float(rand_erase), 4)
     }
     return param
 
@@ -59,4 +59,4 @@ for exp_name in exp_name_list:
     with open(f'/media/Zeus/haoc/hawkeye_fgvc/tuned_parameteres/{exp_name}.json', 'w') as f:
         json.dump(param_dict, f, indent=4)
     
-subprocess.call('python scripts/gen_config.py')
+subprocess.call('python scripts/gen_config.py', shell=True)

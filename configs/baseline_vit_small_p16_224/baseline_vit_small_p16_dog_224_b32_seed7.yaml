@@ -3,16 +3,16 @@ dataset:
   meta_dir: /tmp/code/metadata/dog
   name: dog
   num_workers: 4
-  root_dir: /mnt/default/datasets/hawkeye_datasets/datasets/Stanford_Dog/Images
+  root_dir: /mnt/default/datasets/fgvc_datasets/datasets/Stanford_Dog/Images
   transformer:
     auto_aug: rand_aug
     image_size: 224
-    rand_erase: 0.18524912208761837
+    rand_erase: 0.1852
     resize_size: 256
 experiment:
-  log_dir: /mnt/default/projects/hawkeye_fgvc_2023/v1/baseline_vit_small_p16
-  name: vit_small_p16_dog_224
-  seed: 0
+  log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_vit_small_p16
+  name: vit_small_p16_dog_224_7
+  seed: 7
   use_amp: false
 model:
   name: ViT_Small_P16
@@ -23,10 +23,10 @@ train:
   epoch: 50
   optimizer:
     clip_grad: null
-    lr: 1.1870013446872952e-05
+    lr: 1.2e-05
     momentum: 0.9
     name: Adam
-    weight_decay: 0.006052531384265279
+    weight_decay: 0.006053
   save_frequence: 50
   scheduler:
     T_max: 50
