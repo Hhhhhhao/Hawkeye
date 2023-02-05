@@ -67,7 +67,7 @@ class Trainer(object):
         if not self.resume and not self.debug and utils.is_primary(config):
             # assert not os.path.exists(self.log_root), 'Experiment log folder already exists!!'
             # create log root directory and copy
-            os.makedirs(self.log_root)
+            os.makedirs(self.log_root, exist_ok=True)
             print(f'Created log directory: {self.log_root}')
             # copy yaml file and train.py
             with open(os.path.join(self.log_root, 'train_config.yaml'), 'w') as f:

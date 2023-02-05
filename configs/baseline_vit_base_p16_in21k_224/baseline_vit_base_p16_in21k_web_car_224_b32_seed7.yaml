@@ -3,7 +3,7 @@ dataset:
   meta_dir: /tmp/code/metadata/web_car
   name: web_car
   num_workers: 4
-  root_dir: /mnt/default/dataset/fgvc_datasets/datasets/web_car
+  root_dir: /mnt/data/dataset/fgvc_datasets/datasets/web_car
   transformer:
     auto_aug: null
     image_size: 224

@@ -18,7 +18,7 @@ def create_config(pipeline_name='baseline', model_name='ResNet50', dataset_name=
     # save_dir = './results'
     save_dir = '/mnt/default/projects/fgvc_2023/v1/'
     # data_dir = './data'
-    data_dir = '/mnt/default/dataset/fgvc_datasets/datasets'
+    data_dir = '/mnt/data/dataset/fgvc_datasets/datasets'
 
     # experiments
     cfg.experiment = CN()
@@ -133,3 +133,4 @@ if __name__ == '__main__':
     gen_exp('baseline', 'ResNet50_IN21K', 224)
     gen_exp('baseline', 'ViT_Small_P16', 224)
     gen_exp('baseline', 'ViT_Base_P16_IN21K', 224)
+    gen_exp('baseline', 'Swin_Base_P4_W7_IN21K', 224)
