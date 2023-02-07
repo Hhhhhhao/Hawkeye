@@ -7,7 +7,7 @@ dataset:
   transformer:
     auto_aug: null
     image_size: 224
-    rand_erase: 0.0
+    rand_erase: 0.0945
     resize_size: 256
 experiment:
   log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_swin_base_p4_w7_in21k
@@ -23,10 +23,10 @@ train:
   epoch: 50
   optimizer:
     clip_grad: null
-    lr: 0.001
+    lr: 2.6e-05
     momentum: 0.9
     name: Adam
-    weight_decay: 0.0001
+    weight_decay: 0.006624
   save_frequence: 50
   scheduler:
     T_max: 50

@@ -5,9 +5,9 @@ dataset:
   num_workers: 4
   root_dir: /mnt/data/dataset/fgvc_datasets/datasets/fgvc-aircraft-2013b/data/images
   transformer:
-    auto_aug: null
+    auto_aug: auto_aug
     image_size: 224
-    rand_erase: 0.0
+    rand_erase: 0.0529
     resize_size: 256
 experiment:
   log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_vit_base_p16_in21k
@@ -23,10 +23,10 @@ train:
   epoch: 50
   optimizer:
     clip_grad: null
-    lr: 0.001
+    lr: 6.7e-05
     momentum: 0.9
     name: Adam
-    weight_decay: 0.0001
+    weight_decay: 0.001836
   save_frequence: 50
   scheduler:
     T_max: 50

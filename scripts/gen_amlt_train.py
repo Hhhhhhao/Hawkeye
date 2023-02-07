@@ -116,4 +116,6 @@ if __name__ == '__main__':
     write_jobs(sku='NDv2g1:16G1-V100', target_service='sing', target_name='msroctovc', model_name='baseline_resnet50_224')
     write_jobs(sku='NCv2:16G1-P100', target_service='sing', target_name='msrresrchvc', model_name='baseline_resnet50_in21k_224')
     write_jobs(sku='NCv2:16G1-P100', target_service='sing', target_name='msrresrchvc', model_name='baseline_vit_small_p16_224')
+    write_jobs(sku='NDv2g1:16G1-V100', target_service='sing', target_name='msrresrchvc', model_name='baseline_vit_base_p16_in21k_224')
+    write_jobs(sku='NDv2g1:16G1-V100', target_service='sing', target_name='msrresrchvc', model_name='baseline_swin_base_p4_w7_in21k_224')
 
