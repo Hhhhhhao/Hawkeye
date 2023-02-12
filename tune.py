@@ -5,6 +5,7 @@ import torch
 import utils
 from functools import partial
 from algorithms.base import Trainer
+from algorithms.PIM import PIMTrainer
 from yacs.config import CfgNode as CN
 
 import ray
@@ -59,7 +60,11 @@ def objective(config, config_path):
     args = tune_hyperparameters(args, config)
 
     # create trainer
-    trainer = Trainer(args)
+    if args.trainer.name == 'PIM':
+        trainer = PIMTrainer(args)
+    else:
+        # baseline
+        trainer = Trainer(args)
 
     loaded_checkpoint = session.get_checkpoint()
     if loaded_checkpoint:

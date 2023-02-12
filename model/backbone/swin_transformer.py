@@ -11,9 +11,11 @@ from model.registry import BACKBONE, MODEL
 
 __all__ = [
     'swin_tiny_patch4_window7_224',
+    'swin_tiny_patch4_window7_224_in21k',
     'swin_base_patch4_window7_224',
     'swin_base_patch4_window7_224_in21k',
     'Swin_Tiny_P4_W7',
+    'Swin_Tiny_P4_W7_IN21K',
     'Swin_Base_P4_W7',
     'Swin_Base_P4_W7_IN21K'
 ]
@@ -21,6 +23,7 @@ __all__ = [
 
 model_urls = {
     'swin_tiny_patch4_window7_224': 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_tiny_patch4_window7_224.pth',
+    'swin_tiny_patch4_window7_224_in21k': 'https://github.com/SwinTransformer/storage/releases/download/v1.0.8/swin_tiny_patch4_window7_224_22k.pth',
     'swin_base_patch4_window7_224': 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window7_224_22kto1k.pth',
     'swin_base_patch4_window7_224_in21k': 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window7_224_22k.pth'
 }
@@ -662,7 +665,7 @@ def _swin(
     model = SwinTransformer(**model_kwargs)
 
     if pretrained:
-        state_dict = load_state_dict_from_url(model_urls[arch], progress=progress)
+        state_dict = load_state_dict_from_url(model_urls[arch], progress=progress)['model']
         resize_pos_embed_swin(model, state_dict)
         load_state_dict(model, state_dict)
     
@@ -673,6 +676,11 @@ def _swin(
 def swin_tiny_patch4_window7_224(pretrained=False, progress=True, **kwargs):
     model_kwargs = dict(patch_size=4, window_size=7, embed_dim=96, depths=(2, 2, 6, 2), num_heads=(3, 6, 12, 24), **kwargs)
     return _swin('swin_tiny_patch4_window7_224', pretrained, progress, **model_kwargs)
+
+@BACKBONE.register
+def swin_tiny_patch4_window7_224_in21k(pretrained=False, progress=True, **kwargs):
+    model_kwargs = dict(patch_size=4, window_size=7, embed_dim=96, depths=(2, 2, 6, 2), num_heads=(3, 6, 12, 24), **kwargs)
+    return _swin('swin_tiny_patch4_window7_224_in21k', pretrained, progress, **model_kwargs)
 
 
 @BACKBONE.register
@@ -691,6 +699,11 @@ def swin_base_patch4_window7_224_in21k(pretrained=False, progress=True, **kwargs
 def Swin_Tiny_P4_W7(config):
     pretrained = config.pretrained if 'pretrained' in config else True
     return swin_tiny_patch4_window7_224(pretrained=pretrained, img_size=config.img_size, num_classes=config.num_classes)
+
+@MODEL.register
+def Swin_Tiny_P4_W7_IN21K(config):
+    pretrained = config.pretrained if 'pretrained' in config else True
+    return swin_tiny_patch4_window7_224_in21k(pretrained=pretrained, img_size=config.img_size, num_classes=config.num_classes)
 
 
 @MODEL.register

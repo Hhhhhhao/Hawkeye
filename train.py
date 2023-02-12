@@ -5,6 +5,8 @@ import torch
 import utils
 
 from algorithms.base import Trainer
+from algorithms.PIM import PIMTrainer
+
 
 def main():
     args = utils.setup_config()
@@ -24,7 +26,11 @@ def main():
     utils.set_random_seed(args.experiment.seed, args.rank)
 
     # create trainer
-    trainer = Trainer(args)
+    if args.trainer.name == 'PIM':
+        trainer = PIMTrainer(args)
+    else:
+        # baseline
+        trainer = Trainer(args)
 
     # start training 
     trainer.train()

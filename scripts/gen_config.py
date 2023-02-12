@@ -13,16 +13,16 @@ def create_config(pipeline_name='baseline', model_name='ResNet50', dataset_name=
     cfg = CN()
 
 
-    # base_dir = '.'
-    base_dir = '/tmp/code'
-    # save_dir = './results'
-    save_dir = '/mnt/default/projects/fgvc_2023/v1/'
-    # data_dir = './data'
-    data_dir = '/mnt/data/dataset/fgvc_datasets/datasets'
+    base_dir = '/media/Zeus/haoc/hawkeye_fgvc'
+    # base_dir = '/tmp/code'
+    save_dir = './results'
+    # save_dir = '/mnt/default/projects/fgvc_2023/v1/'
+    data_dir = './data'
+    # data_dir = '/mnt/data/dataset/fgvc_datasets/datasets'
 
     # experiments
     cfg.experiment = CN()
-    cfg.experiment.log_dir = os.path.join(save_dir, f'{pipeline_name}_{model_name.lower()}')
+    cfg.experiment.log_dir = os.path.join(save_dir, f'{pipeline_name.lower()}_{model_name.lower()}')
     cfg.experiment.name = f'{model_name.lower()}_{dataset_name.lower()}_{image_size}_{seed}'
     cfg.experiment.seed = seed
     cfg.experiment.use_amp = use_amp
@@ -40,9 +40,31 @@ def create_config(pipeline_name='baseline', model_name='ResNet50', dataset_name=
     cfg.dataset.transformer.resize_size = int(image_size / crop_ratio)
     cfg.dataset.transformer.image_size = image_size
 
+    # trianer
+    cfg.trainer = CN()
+    cfg.trainer.name = pipeline_name
+
     # model 
     cfg.model = CN()
-    cfg.model.name = model_name
+    if pipeline_name == 'PIM':
+        cfg.model.name = 'PIM'
+        cfg.model.backbone_name = model_name
+        cfg.model.pim = CN()
+        cfg.model.pim.use_fpn = True
+        cfg.model.pim.use_selection = True
+        cfg.model.pim.use_combiner = True
+        cfg.model.pim.fpn_size = 1536
+        cfg.model.pim.proj_type = 'Linear'
+        cfg.model.pim.upsample_type = 'Conv'
+        cfg.model.pim.num_selects = CN({
+            'layer1': 256,
+            'layer2': 128,
+            'layer3': 64,
+            'layer4': 32
+        })
+    else:
+        # baseline
+        cfg.model.name = model_name
     cfg.model.num_classes = num_classes
 
     # train 
@@ -129,8 +151,21 @@ def gen_exp(pipeline_name, model_name, image_size):
 
 if __name__ == '__main__':
 
-    gen_exp('baseline', 'ResNet50', 224)
-    gen_exp('baseline', 'ResNet50_IN21K', 224)
-    gen_exp('baseline', 'ViT_Small_P16', 224)
-    gen_exp('baseline', 'ViT_Base_P16_IN21K', 224)
-    gen_exp('baseline', 'Swin_Base_P4_W7_IN21K', 224)
+    # gen_exp('Baseline', 'ResNet50', 224)
+    # gen_exp('Baseline', 'ResNet50_IN21K', 224)
+    # gen_exp('Baseline', 'ViT_Small_P16', 224)
+    # gen_exp('Baseline', 'ViT_Base_P16_IN21K', 224)
+    # gen_exp('Baseline', 'Swin_Tiny_P4_W7_IN21K', 224)
+    # gen_exp('Baseline', 'Swin_Base_P4_W7_IN21K', 224)
+    # gen_exp('Baseline', 'CAFormer_S18', 224)
+    # gen_exp('Baseline', 'CAFormer_S18_IN21K', 224)
+    # gen_exp('Baseline', 'CAFormer_S36', 224)
+    # gen_exp('Baseline', 'CAFormer_S36_IN21K', 224)
+    # gen_exp('Baseline', 'CAFormer_M36', 224)
+
+
+    # gen_exp('Baseline', 'TransFG_ViT_Small_P16_IN21K', 224)
+    # gen_exp('Baseline', 'TransFG_ViT_Base_P16_IN21K', 224)
+
+    gen_exp('PIM', 'Swin_Tiny_P4_W7_IN21K', 224)
+    gen_exp('PIM', 'Swin_Base_P4_W7_IN21K', 224)

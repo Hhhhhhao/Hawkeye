@@ -32,3 +32,5 @@ train:
     T_max: 50
     eta_min: 1.0e-08
     name: CosineAnnealingLR
+trainer:
+  name: Baseline

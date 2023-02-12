@@ -5,9 +5,9 @@ dataset:
   num_workers: 4
   root_dir: /mnt/data/dataset/fgvc_datasets/datasets/CUB_200_2011/CUB_200_2011/images
   transformer:
-    auto_aug: null
+    auto_aug: rand_aug
     image_size: 224
-    rand_erase: 0.1563
+    rand_erase: 0.2076
     resize_size: 256
 experiment:
   log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_swin_base_p4_w7_in21k
@@ -23,12 +23,14 @@ train:
   epoch: 50
   optimizer:
     clip_grad: null
-    lr: 3.4e-05
+    lr: 3.1e-05
     momentum: 0.9
     name: Adam
-    weight_decay: 0.000203
+    weight_decay: 0.000265
   save_frequence: 50
   scheduler:
     T_max: 50
     eta_min: 1.0e-08
     name: CosineAnnealingLR
+trainer:
+  name: Baseline

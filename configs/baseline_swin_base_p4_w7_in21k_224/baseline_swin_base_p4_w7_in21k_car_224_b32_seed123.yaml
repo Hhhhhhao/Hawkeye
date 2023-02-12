@@ -5,9 +5,9 @@ dataset:
   num_workers: 4
   root_dir: /mnt/data/dataset/fgvc_datasets/datasets/Stanford_Car
   transformer:
-    auto_aug: null
+    auto_aug: rand_aug
     image_size: 224
-    rand_erase: 0.0475
+    rand_erase: 0.0017
     resize_size: 256
 experiment:
   log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_swin_base_p4_w7_in21k
@@ -26,9 +26,11 @@ train:
     lr: 4.5e-05
     momentum: 0.9
     name: Adam
-    weight_decay: 0.000851
+    weight_decay: 0.088381
   save_frequence: 50
   scheduler:
     T_max: 50
     eta_min: 1.0e-08
     name: CosineAnnealingLR
+trainer:
+  name: Baseline

@@ -1,0 +1,36 @@
+dataset:
+  batch_size: 32
+  meta_dir: /tmp/code/metadata/web_aircraft
+  name: web_aircraft
+  num_workers: 4
+  root_dir: /mnt/data/dataset/fgvc_datasets/datasets/web_aircraft
+  transformer:
+    auto_aug: auto_aug
+    image_size: 224
+    rand_erase: 0.0172
+    resize_size: 256
+experiment:
+  log_dir: /mnt/default/projects/fgvc_2023/v1/baseline_caformer_s36_in21k
+  name: caformer_s36_in21k_web_aircraft_224_7
+  seed: 7
+  use_amp: false
+model:
+  name: CAFormer_S36_IN21K
+  num_classes: 100
+train:
+  criterion:
+    name: CrossEntropyLoss
+  epoch: 50
+  optimizer:
+    clip_grad: null
+    lr: 3.6e-05
+    momentum: 0.9
+    name: Adam
+    weight_decay: 0.002179
+  save_frequence: 50
+  scheduler:
+    T_max: 50
+    eta_min: 1.0e-08
+    name: CosineAnnealingLR
+trainer:
+  name: Baseline

@@ -3,7 +3,7 @@ import os
 
 def write_jobs(sku='G1', target_service='sing', target_name='msroctows', sla_tier='premium',
                model_name='baseline_vit_base_in21k_224', datasets=['aircraft', 'car', 'cub', 'dog', 'web_aircraft', 'web_bird', 'web_car'], num_seeds=3):
-    description = f'{model_name} tune tasks'
+    description = f'{model_name} train tasks'
 
     # write environment
     if 'A100' in target_service:
@@ -115,7 +115,20 @@ if __name__ == '__main__':
 
     write_jobs(sku='NDv2g1:16G1-V100', target_service='sing', target_name='msroctovc', model_name='baseline_resnet50_224')
     write_jobs(sku='NCv2:16G1-P100', target_service='sing', target_name='msrresrchvc', model_name='baseline_resnet50_in21k_224')
+    
     write_jobs(sku='NCv2:16G1-P100', target_service='sing', target_name='msrresrchvc', model_name='baseline_vit_small_p16_224')
     write_jobs(sku='NDv2g1:16G1-V100', target_service='sing', target_name='msrresrchvc', model_name='baseline_vit_base_p16_in21k_224')
-    write_jobs(sku='NDv2g1:16G1-V100', target_service='sing', target_name='msrresrchvc', model_name='baseline_swin_base_p4_w7_in21k_224')
 
+    write_jobs(sku='NDv2g1:16G1-V100', target_service='sing', target_name='msrresrchvc', model_name='baseline_swin_base_p4_w7_in21k_224')
+    write_jobs(sku='NDv2g1:16G1-V100', target_service='sing', target_name='msrresrchvc', model_name='baseline_swin_tiny_p4_w7_in21k_224')
+
+    write_jobs(sku='NDv2g1:16G1-V100', target_service='sing', target_name='msrresrchvc', model_name='baseline_caformer_s18_224')
+    write_jobs(sku='NCv2:16G1-P100', target_service='sing', target_name='msrresrchvc', model_name='baseline_caformer_s18_in21k_224')
+
+    write_jobs(sku='NDv2g1:16G1-V100 ', target_service='sing', target_name='msroctovc', model_name='baseline_caformer_s36_224')
+    write_jobs(sku='NDv2g1:16G1-V100 ', target_service='sing', target_name='msroctovc', model_name='baseline_caformer_s36_in21k_224')
+    # write_jobs(sku='NCv2:16G1-P100', target_service='sing', target_name='msrresrchvc', model_name='b  aseline_caformer_s36_224')
+
+
+    write_jobs(sku='NCv2:16G1-P100', target_service='sing', target_name='msrresrchvc', model_name='baseline_transfg_vit_small_p16_in21k_224')
+    write_jobs(sku='NDv2g1:16G1-V100', target_service='sing', target_name='msrresrchvc', model_name='baseline_transfg_vit_base_p16_in21k_224')

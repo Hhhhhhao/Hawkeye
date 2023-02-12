@@ -21,7 +21,11 @@ def get_acc(file_name):
     return acc_list
 
 
-exp_name_list = ['baseline_resnet50_224', 'baseline_resnet50_in21k_224', 'baseline_vit_small_p16_224']
+exp_name_list = ['baseline_resnet50_224', 'baseline_resnet50_in21k_224', 
+                 'baseline_vit_small_p16_224', 'baseline_vit_base_p16_in21k_224', 
+                 'baseline_swin_tiny_p4_w7_in21k_224', 'baseline_swin_base_p4_w7_in21k_224',
+                 'baseline_caformer_s18_224', 'baseline_caformer_s18_in21k_224', 'baseline_caformer_s36_224', # 'baseline_caformer_s36_224'
+                 'baseline_transfg_vit_small_p16_in21k_224', 'baseline_transfg_vit_base_p16_in21k_224']
 all_acc_dict = {}
 for exp_name in exp_name_list:
     # exp_name = 'baseline_resnet50_224'

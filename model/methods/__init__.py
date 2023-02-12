@@ -13,3 +13,7 @@ from .Interp_Parts import IP_ResNet50, IP_ResNet101
 from .ProtoTree import ProtoTreeNet
 from .APCNN import APCNN
 from .PeerLearningNet import PeerLearningNet
+
+
+
+from .TransFG import TransFG_ViT_Small_P16, TransFG_ViT_Base_P16, TransFG_ViT_Small_P16_IN21K, TransFG_ViT_Base_P16_IN21K

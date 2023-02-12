@@ -13,10 +13,14 @@ def get_param(file_name):
     re_auto_aug = r"auto_aug': ((\w|')*),"
     re_rand_e = r"rand_erase': (([0-9]|\.|e|-)*)"
 
+    lr = 0
+    weight_decay = 0
+    auto_aug = None
+    rand_erase = 0
 
     with open(file_name, 'r', encoding='utf-8') as f:
         lines = f.readlines()
-        for line in lines:
+        for line in lines[::-1]:
             if not line.startswith('Best trial config'):
                 continue
 
@@ -28,7 +32,7 @@ def get_param(file_name):
             else:
                 auto_aug = auto_aug[1:-1]
             rand_erase = re.search(re_rand_e,line).group(1)
-
+            break
     
     param = {
         'lr': round(float(lr), 6),
@@ -39,7 +43,16 @@ def get_param(file_name):
     return param
 
 
-exp_name_list = ['baseline_resnet50_224', 'baseline_resnet50_in21k_224', 'baseline_vit_small_p16_224', 'baseline_vit_base_p16_in21k_224', 'baseline_swin_base_p4_w7_in21k_224']
+# exp_name_list = ['baseline_resnet50_224', 'baseline_resnet50_in21k_224', 'baseline_vit_small_p16_224', 'baseline_vit_base_p16_in21k_224', 'baseline_swin_base_p4_w7_in21k_224',
+#                  'baseline_transfg_vit_small_p16_in21k_224_tune', 'baseline_transfg_vit_base_p16_in21k_224_tune']
+
+# exp_name_list = ['baseline_transfg_vit_small_p16_in21k_224', 'baseline_transfg_vit_base_p16_in21k_224']
+
+# exp_name_list = ['baseline_swin_tiny_p4_w7_in21k_224', 'baseline_swin_base_p4_w7_in21k_224', 'baseline_caformer_s18_224', 'baseline_caformer_s36_224', 'baseline_caformer_s18_in21k_224']
+
+exp_name_list = ['baseline_caformer_s36_in21k_224']
+
+
 for exp_name in exp_name_list:
     # exp_name = 'baseline_resnet50_224'
     # exp_name = 'baseline_resnet50_in21k_224'

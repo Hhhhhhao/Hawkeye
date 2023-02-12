@@ -120,5 +120,14 @@ if __name__ == '__main__':
     write_jobs(sku='NCv2:16G4-P100', target_service='sing', target_name='msrresrchvc', model_name='baseline_resnet50_in21k_224')
     write_jobs(sku='NCv2:16G4-P100', target_service='sing', target_name='msrresrchvc', model_name='baseline_vit_small_p16_224')
     write_jobs(sku='NDv2g1:16G4-V100', target_service='sing', target_name='msrresrchvc', model_name='baseline_vit_base_p16_in21k_224')
+    write_jobs(sku='NCv2:16G4-P100', target_service='sing', target_name='msrresrchvc', model_name='baseline_swin_tiny_p4_w7_in21k_224')
     write_jobs(sku='NDv2g1:16G4-V100', target_service='sing', target_name='msrresrchvc', model_name='baseline_swin_base_p4_w7_in21k_224')
+    
+    write_jobs(sku='NDv2g1:16G4-V100', target_service='sing', target_name='msrresrchvc', model_name='baseline_caformer_s18_224')
+    write_jobs(sku='NDv2g1:16G4-V100', target_service='sing', target_name='msrresrchvc', model_name='baseline_caformer_s18_in21k_224')
 
+    write_jobs(sku='NDv2g1:16G4-V100', target_service='sing', target_name='msrresrchvc', model_name='baseline_caformer_s36_in21k_224')
+    # write_jobs(sku='NDAMv4:80G4-A100', target_service='sing', target_name='msrresrchvc', sla_tier='basic', model_name='baseline_caformer_m36_224')
+
+    write_jobs(sku='NCv2:16G4-P100', target_service='sing', target_name='msrresrchvc', model_name='baseline_transfg_vit_small_p16_in21k_224')
+    write_jobs(sku='NCv2:16G4-P100', target_service='sing', target_name='msrresrchvc', model_name='baseline_transfg_vit_base_p16_in21k_224')

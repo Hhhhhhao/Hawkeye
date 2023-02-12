@@ -17,7 +17,7 @@ __all__ = [
     'caformer_b36',
     'caformer_b36_in21k',
     'CAFormer_S18',
-    'CAFormer_S18_IN21k',
+    'CAFormer_S18_IN21K',
     'CAFormer_S36',
     'CAFormer_S36_IN21K',
     'CAFormer_M36',
@@ -980,7 +980,7 @@ def caformer_s18_in21k(pretrained=False, **kwargs):
 
 
 @MODEL.register
-def CAFormer_S18_IN21k(config):
+def CAFormer_S18_IN21K(config):
     pretrained = config.pretrained if 'pretrained' in config else True
     return caformer_s18_in21k(pretrained=pretrained, num_classes=config.num_classes)
 
