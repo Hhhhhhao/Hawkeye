@@ -13,11 +13,11 @@ def create_config(pipeline_name='baseline', model_name='ResNet50', dataset_name=
     cfg = CN()
 
 
-    base_dir = '/media/Zeus/haoc/hawkeye_fgvc'
+    base_dir = '/media/Zeus/hawkeye_fgvc'
     # base_dir = '/tmp/code'
     save_dir = './results'
     # save_dir = '/mnt/default/projects/fgvc_2023/v1/'
-    data_dir = './data'
+    data_dir = '/media/Zeus/datasets'
     # data_dir = '/mnt/data/dataset/fgvc_datasets/datasets'
 
     # experiments
@@ -59,9 +59,13 @@ def create_config(pipeline_name='baseline', model_name='ResNet50', dataset_name=
         cfg.model.pim.num_selects = CN({
             'layer1': 256,
             'layer2': 128,
-            'layer3': 64,
+            'layer3': 32,
             'layer4': 32
         })
+        cfg.model.pim.lambda_b = 0.5
+        cfg.model.pim.lambda_s = 0.0
+        cfg.model.pim.lambda_n = 5.0
+        cfg.model.pim.lambda_c = 1.0
     else:
         # baseline
         cfg.model.name = model_name

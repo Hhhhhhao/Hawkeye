@@ -1,16 +1,16 @@
 dataset:
   batch_size: 32
-  meta_dir: /tmp/code/metadata/car
+  meta_dir: /media/Zeus/hawkeye_fgvc/metadata/car
   name: car
   num_workers: 4
-  root_dir: /mnt/data/dataset/fgvc_datasets/datasets/Stanford_Car
+  root_dir: /media/Zeus/datasets/Stanford_Car
   transformer:
     auto_aug: null
     image_size: 224
     rand_erase: 0.0
     resize_size: 256
 experiment:
-  log_dir: /mnt/default/projects/fgvc_2023/v1/pim_swin_tiny_p4_w7_in21k
+  log_dir: ./results/pim_swin_tiny_p4_w7_in21k
   name: swin_tiny_p4_w7_in21k_car_224_42
   seed: 42
   use_amp: false
@@ -20,10 +20,14 @@ model:
   num_classes: 196
   pim:
     fpn_size: 1536
+    lambda_b: 0.5
+    lambda_c: 1.0
+    lambda_n: 5.0
+    lambda_s: 0.0
     num_selects:
       layer1: 256
       layer2: 128
-      layer3: 64
+      layer3: 32
       layer4: 32
     proj_type: Linear
     upsample_type: Conv

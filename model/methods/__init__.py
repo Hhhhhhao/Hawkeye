@@ -17,3 +17,4 @@ from .PeerLearningNet import PeerLearningNet
 
 
 from .TransFG import TransFG_ViT_Small_P16, TransFG_ViT_Base_P16, TransFG_ViT_Small_P16_IN21K, TransFG_ViT_Base_P16_IN21K
+from .PIM import PIM

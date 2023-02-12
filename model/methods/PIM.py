@@ -9,7 +9,6 @@ import copy
 
 
 import sys
-sys.path.append('/media/Zeus/haoc/hawkeye_fgvc')
 from model.registry import MODEL, BACKBONE
 
 # TODO: add this to installation
@@ -444,7 +443,7 @@ class PluginModule(nn.Module):
 @MODEL.register
 def PIM(config):
     name = config.backbone_name
-    backbone = BACKBONE.get(name)(config)
+    backbone = MODEL.get(name)(config)
 
     if name in ['resnet50', 'resnet50_in21k']:
         return_nodes = {
@@ -460,7 +459,8 @@ def PIM(config):
             'blocks.10': 'layer3',
             'blocks.11': 'layer4',
         }
-    elif name in ['swin_tiny_patch4_window7_224', 'swin_tiny_patch4_window7_224_in21k', 'swin_base_patch4_window7_224', 'swin_base_patch4_window7_224_in21k']:
+    elif name in ['swin_tiny_patch4_window7_224', 'swin_tiny_patch4_window7_224_in21k', 'swin_base_patch4_window7_224', 'swin_base_patch4_window7_224_in21k',
+                  'Swin_Tiny_P4_W7', 'Swin_Tiny_P4_W7_IN21K', 'Swin_Base_P4_W7', 'Swin_Base_P4_W7_IN21K']:
         return_nodes = {
             'layers.0': 'layer1',
             'layers.1': 'layer2',

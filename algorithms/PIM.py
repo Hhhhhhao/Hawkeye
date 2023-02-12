@@ -10,8 +10,8 @@ from utils import PerformanceMeter, TqdmHandler, AverageMeter, accuracy, Timer, 
 
 
 class PIMTrainer(Trainer):
-    def __init__(self):
-        super(PIMTrainer, self).__init__()
+    def __init__(self, config):
+        super(PIMTrainer, self).__init__(config)
 
     def batch_training(self, data):
         # images, labels = self.to_device(data['img']), self.to_device(data['label'])
