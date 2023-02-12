@@ -33,6 +33,7 @@ def write_jobs(sku='G1', target_service='sing', target_name='msroctows', sla_tie
             '  - pip install --upgrade torchvision \n' +\
             '  - pip install hyperopt\n' +\
             "  - pip install 'protobuf<=3.20.1' --force-reinstall\n" +\
+            '  - pip install surgeon-pytorch\n' +\
             '  - pwd \n'
     #code:
     # local directory of the code. this will be uploaded to the server.
@@ -131,3 +132,6 @@ if __name__ == '__main__':
 
     write_jobs(sku='NCv2:16G4-P100', target_service='sing', target_name='msrresrchvc', model_name='baseline_transfg_vit_small_p16_in21k_224')
     write_jobs(sku='NCv2:16G4-P100', target_service='sing', target_name='msrresrchvc', model_name='baseline_transfg_vit_base_p16_in21k_224')
+
+    write_jobs(sku='NCv2:16G4-P100', target_service='sing', target_name='msrresrchvc', model_name='pim_swin_tiny_p4_w7_in21k_224')
+    write_jobs(sku='NDv2g1:16G4-V100', target_service='sing', target_name='msroctovc', model_name='pim_swin_base_p4_w7_in21k_224')

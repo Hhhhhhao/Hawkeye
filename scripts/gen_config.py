@@ -13,12 +13,12 @@ def create_config(pipeline_name='baseline', model_name='ResNet50', dataset_name=
     cfg = CN()
 
 
-    base_dir = '/media/Zeus/hawkeye_fgvc'
-    # base_dir = '/tmp/code'
-    save_dir = './results'
-    # save_dir = '/mnt/default/projects/fgvc_2023/v1/'
-    data_dir = '/media/Zeus/datasets'
-    # data_dir = '/mnt/data/dataset/fgvc_datasets/datasets'
+    # base_dir = '/media/Zeus/hawkeye_fgvc'
+    base_dir = '/tmp/code'
+    # save_dir = './results'
+    save_dir = '/mnt/default/projects/fgvc_2023/v1/'
+    # data_dir = '/media/Zeus/datasets'
+    data_dir = '/mnt/data/dataset/fgvc_datasets/datasets'
 
     # experiments
     cfg.experiment = CN()

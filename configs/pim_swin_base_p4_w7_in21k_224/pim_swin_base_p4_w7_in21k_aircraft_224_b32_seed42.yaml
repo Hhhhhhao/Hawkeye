@@ -1,16 +1,16 @@
 dataset:
   batch_size: 32
-  meta_dir: /media/Zeus/hawkeye_fgvc/metadata/aircraft
+  meta_dir: /tmp/code/metadata/aircraft
   name: aircraft
   num_workers: 4
-  root_dir: /media/Zeus/datasets/fgvc-aircraft-2013b/data/images
+  root_dir: /mnt/data/dataset/fgvc_datasets/datasets/fgvc-aircraft-2013b/data/images
   transformer:
     auto_aug: null
     image_size: 224
     rand_erase: 0.0
     resize_size: 256
 experiment:
-  log_dir: ./results/pim_swin_base_p4_w7_in21k
+  log_dir: /mnt/default/projects/fgvc_2023/v1/pim_swin_base_p4_w7_in21k
   name: swin_base_p4_w7_in21k_aircraft_224_42
   seed: 42
   use_amp: false

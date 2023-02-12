@@ -1,16 +1,16 @@
 dataset:
   batch_size: 32
-  meta_dir: /media/Zeus/hawkeye_fgvc/metadata/car
+  meta_dir: /tmp/code/metadata/car
   name: car
   num_workers: 4
-  root_dir: /media/Zeus/datasets/Stanford_Car
+  root_dir: /mnt/data/dataset/fgvc_datasets/datasets/Stanford_Car
   transformer:
     auto_aug: null
     image_size: 224
     rand_erase: 0.0
     resize_size: 256
 experiment:
-  log_dir: ./results/pim_swin_base_p4_w7_in21k
+  log_dir: /mnt/default/projects/fgvc_2023/v1/pim_swin_base_p4_w7_in21k
   name: swin_base_p4_w7_in21k_car_224_7
   seed: 7
   use_amp: false
