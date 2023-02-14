@@ -50,7 +50,7 @@ def get_param(file_name):
 
 # exp_name_list = ['baseline_swin_tiny_p4_w7_in21k_224', 'baseline_swin_base_p4_w7_in21k_224', 'baseline_caformer_s18_224', 'baseline_caformer_s36_224', 'baseline_caformer_s18_in21k_224']
 
-exp_name_list = ['baseline_caformer_s36_in21k_224']
+exp_name_list = ['pim_swin_base_p4_w7_in21k_224', 'pim_swin_tiny_p4_w7_in21k_224']
 
 
 for exp_name in exp_name_list:
